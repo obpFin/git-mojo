@@ -9,6 +9,8 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.0.3",
     "vue": "^2.5.16"
   },
   "devDependencies": {

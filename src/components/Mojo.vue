@@ -1,32 +1,24 @@
 <template>
-  <h1>Git Mojo</h1>
+  <div class="header">
+    <h1 class="header__text">Git Mojo</h1>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Mojo",
+  name: 'Mojo',
   data: function() {
-    return {
-      
-    }
+    return {};
   }
-}
+};
 </script>
 
-<style scoped lang="scss">
-h1 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-}
+<style scoped lang="sass">
+  @import "../assets/sass/mixins.sass"
 
-a {
-  color: #42b983;
-}
+  .header
+    position: absolute
+    padding: 20px
+    
+    .header__text
 </style>

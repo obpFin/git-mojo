@@ -1,0 +1,37 @@
+@mixin dark-bg()
+  background: rgba(0, 0, 0, 0.5)
+  padding: 20px
+
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) 
+  top: $top
+  right: $right
+  bottom: $bottom
+  left: $left
+  position: absolute
+
+
+@mixin absolutecenter($axis: "both")
+  position: absolute
+  @if $axis == "y"
+    top: 50%
+    transform: translateY(-50%)
+  
+  @if $axis == "x"
+    left: 50%
+    transform: translateX(-50%)
+  
+  @if $axis == "both"
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+  
+@mixin center-block
+  position: relative
+  top: 50%
+  transform: translateY(50%)
+
+
+@mixin opacity($opacity) 
+  opacity: $opacity
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie) //IE8

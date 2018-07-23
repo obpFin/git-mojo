@@ -5,6 +5,7 @@
   <div class="content">
     <div class="inner">
       <Sidebar />
+      <User @onSetUserName="onSetUserName" v-bind:name="userName"></User>
     </div>
   </div>
 </div>
@@ -12,16 +13,23 @@
 
 <script>
 import Sidebar from "./Sidebar/Sidebar.vue";
+import User from "./User/User.vue";
 const sourceUrl = "https://api.github.com";
 export default {
   name: "Mojo",
   components: {
-    Sidebar
+    Sidebar,
+    User
   },
   data: function() {
-    return {};
+    return {
+      userName: ""
+    };
   },
   methods: {
+    onSetUserName(name) {
+      this.userName = name;
+    },
     getUserData(userName) {
       if (typeof userName === "string") {
         fetch(`${sourceUrl}/userName`)

@@ -1,12 +1,18 @@
 <template>
+<div class="main">
   <div class="header">
-    <h1 class="header__text">Git Mojo</h1>
   </div>
+  <div class="content">
+    <div class="inner">
+      <h2>Team: Montel</h2>
+    </div>
+  </div>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'Mojo',
+  name: "Mojo",
   data: function() {
     return {};
   }
@@ -14,11 +20,17 @@ export default {
 </script>
 
 <style scoped lang="sass">
-  @import "../assets/sass/mixins.sass"
+  @import "../assets/sass/mixins/mixins"
+  @import "../assets/sass/main"
+  .main
+    @include inner-shadow
+    height: 100vh
+    margin: 120px
+    background: $primary-lighter
+    .header
 
-  .header
-    position: absolute
-    padding: 20px
-    
-    .header__text
+      .header__text
+    .content
+      background: $primary-light
+
 </style>

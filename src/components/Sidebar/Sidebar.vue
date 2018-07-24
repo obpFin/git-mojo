@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <img src="../../assets/images/mojo.png" alt="mojo">
+    <a href="/"><img src="../../assets/images/mojo.png" alt="mojo"></a>
   </div>
 </template>
 

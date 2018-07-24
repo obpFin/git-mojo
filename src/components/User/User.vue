@@ -5,7 +5,7 @@
         <Spinner size="big" line-fg-color="#ff7043"/>
       </div>
       <div v-else-if="userData.login" class="user__info" key="info">
-        <h1>Welcome {{ user.name || user.login }}</h1>
+        <UserInfo :user="userData"/>
       </div>
       <div v-else-if="fetchUser == false" class="user__name" key="input">
         <UserInput @setUserName="onSetUser" v-bind:userName="userName" v-bind:userNotFound="userNotFound"/>
@@ -17,12 +17,14 @@
 <script>
 import Spinner from "vue-simple-spinner";
 import UserInput from "./UserInput.vue";
+import UserInfo from "./UserInfo.vue";
 import { getUserData, getUserContribs } from "../../api/api";
 
 export default {
   props: ["user"],
   components: {
     UserInput,
+    UserInfo,
     Spinner
   },
   data: function() {

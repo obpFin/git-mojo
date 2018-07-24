@@ -7,7 +7,6 @@ const getUserData = userName => {
       fetch(`${ghSourceUrl}/users/${userName}`)
         .then(stream => stream.json())
         .then(data => {
-          console.log(data);
           resolve(data);
         })
         .catch(error => reject(() => console.log(error)));
@@ -17,12 +16,10 @@ const getUserData = userName => {
 
 const getUserContribs = userName => {
   return new Promise((resolve, reject) => {
-    console.log("getUserContribs", userName);
     if (typeof userName === "string") {
       fetch(`${contribsSourceUrl}/${userName}`)
         .then(stream => stream.json())
         .then(data => {
-          console.log(data);
           resolve(data);
         })
         .catch(error => reject(() => console.log(error)));

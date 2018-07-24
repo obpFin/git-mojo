@@ -5,7 +5,7 @@
   <div class="content">
     <div class="inner">
       <Sidebar />
-      <User @onSetUserName="onSetUserName" v-bind:name="userName"></User>
+      <User @setUser="setUser" v-bind:user="user"></User>
     </div>
   </div>
 </div>
@@ -14,7 +14,7 @@
 <script>
 import Sidebar from "./Sidebar/Sidebar.vue";
 import User from "./User/User.vue";
-const sourceUrl = "https://api.github.com";
+
 export default {
   name: "Mojo",
   components: {
@@ -23,22 +23,13 @@ export default {
   },
   data: function() {
     return {
-      userName: ""
+      user: {}
     };
   },
   methods: {
-    onSetUserName(name) {
-      this.userName = name;
-    },
-    getUserData(userName) {
-      if (typeof userName === "string") {
-        fetch(`${sourceUrl}/userName`)
-          .then(stream => stream.json())
-          .then(data => {
-            console.log(data);
-          })
-          .catch(error => console.log(error));
-      }
+    setUser(user = {}) {
+      console.log("Mojo -- setUser", user);
+      this.user = user;
     }
   }
 };

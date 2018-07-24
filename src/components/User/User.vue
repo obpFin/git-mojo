@@ -1,14 +1,16 @@
 <template>
   <div class="user">
-    <div v-if="fetchUser">
-      <Spinner size="big" line-fg-color="#ff7043"/>
-    </div>
-    <div v-else-if="userData.login" class="user__info">
-      <h1>You are {{ user.name || user.login }}</h1>
-    </div>
-    <div v-else-if="fetchUser == false" class="user__name">
-      <UserInput @setUserName="onSetUser" v-bind:userName="userName"/>
-    </div>
+    <transition name="fade">
+      <div v-if="fetchUser" key="load">
+        <Spinner size="big" line-fg-color="#ff7043"/>
+      </div>
+      <div v-else-if="userData.login" class="user__info" key="info">
+        <h1>Welcome {{ user.name || user.login }}</h1>
+      </div>
+      <div v-else-if="fetchUser == false" class="user__name" key="input">
+        <UserInput @setUserName="onSetUser" v-bind:userName="userName" v-bind:userNotFound="userNotFound"/>
+      </div>
+    </transition>  
   </div>
 </template>
 
@@ -26,6 +28,7 @@ export default {
   data: function() {
     return {
       fetchUser: false,
+      userNotFound: false,
       userName: null,
       userData: {
         contribs: {}
@@ -41,6 +44,11 @@ export default {
       Promise.all([userData, userContribs])
         .then(data => {
           this.userData = { ...this.userData, ...data[0] };
+          if (!this.userData.login) {
+            this.fetchUser = false;
+            this.userNotFound = true;
+            return null;
+          }
           this.userData.contribs = { ...data[1] };
           this.$emit("setUser", this.userData);
           this.fetchUser = false;

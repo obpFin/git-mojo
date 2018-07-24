@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1>Welcome</h1>
-    <p>Please input your <span><img id="gh-logo" src="../../assets/images/github.png" alt="github-account"></span></p>
+    <h1 v-if="userNotFound == false">Welcome</h1>
+    <p v-if="userNotFound == false">Please input your <span><img id="gh-logo" src="../../assets/images/github.png" alt="github-account"></span></p>
+    <p v-else>User not found!</p>
     <div class="user__input">
       <input class="text-area" v-model="userName" placeholder="username">
       <button class="btn" @click="emitUserNameToParent">Set</button>
@@ -17,6 +18,7 @@ export default {
       userName: ""
     };
   },
+  props: ["userNotFound"],
   methods: {
     emitUserNameToParent() {
       console.log("UserInput -- emitUserNameToParent", this.userName);

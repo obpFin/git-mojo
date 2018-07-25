@@ -1,5 +1,5 @@
 <template>
-<div class="main">
+<div class="wrapper">
   <div class="header">
   </div>
   <div class="content">
@@ -39,11 +39,15 @@ export default {
   @import "../assets/sass/mixins/mixins"
   @import "../assets/sass/main"
 
-  .main
-    //@include inner-shadow
+  .wrapper
     height: 100vh
     margin: 120px
     background: $primary-lighter
+    max-width: 1280px
+    min-width: 320px
+
+    @media only screen and (max-width: 420px)
+      margin: 0
     .header
 
       .header__text

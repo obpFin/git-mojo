@@ -15,13 +15,19 @@ export default {
 
 <style scoped lang="sass">
   @import "../../assets/sass/main"
+
   img
     width: $sidebar-width
     height: $sidebar-width
+    @media only screen and (max-width: 420px)
+      width: $sidebar-width-small
+      height: $sidebar-width-small
 
   .sidebar
     height: 100%
     position: absolute
     width: $sidebar-width
     background: $primary-light
+    @media only screen and (max-width: 420px)
+      width: $sidebar-width-small
 </style>

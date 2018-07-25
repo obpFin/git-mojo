@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <transition name="fade">
-      <div v-if="fetchUser" key="load">
+      <div class="user__load" v-if="fetchUser" key="load">
         <Spinner size="big" line-fg-color="#ff7043"/>
       </div>
       <div v-else-if="userData.login" class="user__info" key="info">
@@ -67,9 +67,10 @@ export default {
   @import "../../assets/sass/mixins/mixins"
 
   .user
-    @include absolutecenter()
-    //margin-left: $sidebar-width
-    .user__name
+    background: $primary-lighter
+    .user__name, .user__load
+      @include absolutecenter()
+
 
 
 </style>

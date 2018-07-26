@@ -15,6 +15,9 @@ import User from "./User/User.vue";
 
 export default {
   name: "Mojo",
+  created() {
+    document.title = "Mojo";
+  },
   components: {
     Sidebar,
     User

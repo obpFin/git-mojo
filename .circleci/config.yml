@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Deploy to S3
           command: |
-            s3deploy -source=dist/ -region=eu-london -bucket=git-mojo
+            s3deploy -source=dist/ -region=eu-west-2 -bucket=git-mojo
 
 workflows:
   version: 2

@@ -18,7 +18,7 @@
           <p>{{ user.location }}</p>
           <hr class="vertical"/>
         </div>
-        <div v-if="user.blog && this.allowBlog(50)" class="item">
+        <div v-if="user.blog && this.allowBlog(50)" class="item blog">
           <p>{{ user.blog }}</p>
         </div>
       </div>
@@ -92,9 +92,11 @@ export default {
         margin-left: 40px
         @media only screen and (max-width: 420px)
           margin-left: 20px
-        &.top__blog
+        &.blog
           @media only screen and (max-width: 420px)
             display: none
+        p
+          width: min-content
         hr
           margin-left: 40px
           @media only screen and (max-width: 420px)
@@ -138,6 +140,6 @@ export default {
           color: $primary-red
           font-weight: bold
           font-size: $text-lg
-          text-shadow: 1px 0 15px black
+          text-shadow: 1px 0 5px black
 
 </style>

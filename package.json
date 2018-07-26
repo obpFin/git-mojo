@@ -12,6 +12,7 @@
     "node-sass": "^4.9.2",
     "normalize.css": "^8.0.0",
     "sass-loader": "^7.0.3",
+    "v-tooltip": "^2.0.0-rc.33",
     "vue": "^2.5.16",
     "vue-simple-spinner": "^1.2.8"
   },

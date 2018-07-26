@@ -6,20 +6,20 @@
     <transition name="fade">
     <div v-if="showInfo" class="user-info">
       <div class="top">
-        <div class="item" style="margin-left: 20px">
-          <p class="top__name">{{ user.login }}</p>
+        <div class="item">
+          <p>{{ user.login }}</p>
           <hr class="vertical"/>
         </div>
         <div v-if="user.company" class="item">
-          <p class="top__company">{{ user.company }}</p>
-          <hr class="vertical"/>
-        </div>
-        <div v-if="user.blog && this.allowBlog(50)" class="item top__blog">
-          <p>{{ user.blog }}</p>
+          <p>{{ user.company }}</p>
           <hr class="vertical"/>
         </div>
         <div v-if="user.location" class="item">
-          <p class="top__company item">{{ user.location }}</p>
+          <p>{{ user.location }}</p>
+          <hr class="vertical"/>
+        </div>
+        <div v-if="user.blog && this.allowBlog(50)" class="item">
+          <p>{{ user.blog }}</p>
         </div>
       </div>
       <div class="score">
@@ -89,25 +89,26 @@ export default {
       .item
         display: flex
         align-items: center
+        margin-left: 40px
+        @media only screen and (max-width: 420px)
+          margin-left: 20px
         &.top__blog
           @media only screen and (max-width: 420px)
             display: none
-        hr.vertical
-          width: 0px
-          height: 40px
-          margin: 0 20px
-          border-color: $primary-red
+        hr
+          margin-left: 40px
           @media only screen and (max-width: 420px)
-            margin: 0 5px
+            margin-left: 20px
+            
     .score
       padding: $base-margin 0
       display: flex
       border-bottom: 1px $primary-light solid
       @media only screen and (max-width: 420px)
         flex-direction: column
-      .score__image
+      .score__image 
         display: inline-block
-        padding: 20px
+        padding: 40px
         @media only screen and (max-width: 420px)
           display: flex
           flex-direction: column
@@ -129,12 +130,14 @@ export default {
         display: flex
         flex-direction: column
         justify-content: center
-
+        hr
+          margin: 20px 0
         @media only screen and (max-width: 420px)
           margin-left: 20px
-          
-
         p > span
           color: $primary-red
+          font-weight: bold
+          font-size: $text-lg
+          text-shadow: 1px 0 15px black
 
 </style>

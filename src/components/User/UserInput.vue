@@ -9,7 +9,7 @@
     </p>
     <p class="warning" v-else>User not found!</p>
     <div class="user__input">
-      <input class="text-area" v-model="userName" placeholder="username">
+      <input class="text-area" v-model="userName" v-on:keyup.enter="emitUserNameToParent" placeholder="username">
       <button class="btn" @click="emitUserNameToParent">Set</button>
     </div>
   </div>

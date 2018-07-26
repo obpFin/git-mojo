@@ -1,7 +1,5 @@
 <template>
 <div class="wrapper">
-  <div class="header">
-  </div>
   <div class="content">
     <div class="inner">
       <Sidebar />
@@ -40,7 +38,7 @@ export default {
   @import "../assets/sass/main"
 
   .wrapper
-    height: 100vh
+    height: 90vh
     margin: 120px
     background: $primary-lighter
     max-width: 1280px
@@ -48,9 +46,6 @@ export default {
 
     @media only screen and (max-width: 420px)
       margin: 0
-    .header
-
-      .header__text
     .content
       background: $primary-light
 

@@ -1,5 +1,15 @@
 # git-mojo
 
+Review your github contributions & more!
+
+## Tech
+```
+Vue.js
+SASS
+CircleCI
+AWS S3
+```
+
 ## Project setup
 ```
 yarn install

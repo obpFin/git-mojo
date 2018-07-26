@@ -44,11 +44,14 @@ export default {
     height: 90vh
     margin: 120px
     background: $primary-lighter
-    max-width: 1280px
+    max-width: $app-max-width
+    max-height: $app-max-height
     min-width: 320px
 
     @media only screen and (max-width: 420px)
       margin: 0
+      height: 100vh
+
     .content
       background: $primary-light
 

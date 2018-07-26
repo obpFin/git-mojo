@@ -70,6 +70,9 @@ export default {
     background: $primary-lighter
     .user__name, .user__load
       @include absolutecenter()
+    .user__name
+      @media only screen and (min-width: 1025px)
+        left: 40%
 
 
 

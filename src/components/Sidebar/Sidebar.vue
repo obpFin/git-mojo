@@ -24,10 +24,12 @@ export default {
       height: $sidebar-width-small
 
   .sidebar
-    height: 100%
+    height: 90vh
     position: absolute
     width: $sidebar-width
+    max-height: $app-max-height
     background: $primary-light
     @media only screen and (max-width: 420px)
       width: $sidebar-width-small
+      height: 100vh
 </style>

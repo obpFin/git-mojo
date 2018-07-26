@@ -13,7 +13,9 @@ $text-darker: #e0e0e0
 //margins
 $base-margin: 40px
 
-//widths
+//dimensions
+$app-max-height: 840px
+$app-max-width: 1280px
 $sidebar-width: 100px
 $sidebar-width-small: 60px
 
@@ -41,6 +43,12 @@ p
   letter-spacing: 0.5px
   @media only screen and (max-width: 420px)
     font-size: 12px
+
+  &.light
+    color: $text-light
+
+ul
+  list-style: none
 
 //fa icons
 .fa-icon 

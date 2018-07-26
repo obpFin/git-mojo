@@ -73,6 +73,9 @@ export default {
     .user__name
       @media only screen and (min-width: 1025px)
         left: 40%
+      @media only screen and (max-width: 420px)
+        transform: translate(-40%, -50%)
+        
 
 
 

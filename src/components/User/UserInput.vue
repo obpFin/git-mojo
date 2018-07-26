@@ -53,6 +53,8 @@ export default {
     background: $primary-light
     padding: $base-margin
     border-radius: 5px
+    @media only screen and (max-width: 420px)
+      padding: $base-margin / 2
     .user__input
       text-align: center
       margin-top: $base-margin

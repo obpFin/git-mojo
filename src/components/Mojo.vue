@@ -50,8 +50,12 @@ export default {
     min-width: 320px
 
     @media only screen and (max-width: 420px)
+      position: static
       margin: 0
       height: 100vh
+      transform: none
+      max-width: 100%
+      max-height: 100%
 
     .content
       background: $primary-light

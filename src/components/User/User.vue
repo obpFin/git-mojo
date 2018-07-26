@@ -75,6 +75,11 @@ export default {
     background: $primary-lighter
     .user__name, .user__load
       @include absolutecenter()
+      // @media only screen and (max-width: 420px)
+      //   position: static
+      //   transform: none!important
+      //   width: auto
+
     .user__name
       @media only screen and (min-width: 1025px)
         left: 40%

@@ -40,6 +40,11 @@ export default {
   methods: {
     async onSetUser(userName) {
       this.fetchUser = true;
+      if (!userName) {
+        this.userNotFound = true;
+        this.fetchUser = false;
+        return null;
+      }
       this.userName = userName;
       const userData = await getUserData(this.userName);
       const userContribs = await getUserContribs(this.userName);

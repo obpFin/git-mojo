@@ -41,8 +41,9 @@ export default {
   @import "../assets/sass/main"
 
   .wrapper
+    @include absolutecenter()
+    width: 1280px
     height: 90vh
-    margin: 120px
     background: $primary-lighter
     max-width: $app-max-width
     max-height: $app-max-height

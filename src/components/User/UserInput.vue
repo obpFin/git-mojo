@@ -7,7 +7,7 @@
         <img id="gh-logo" v-tooltip.top-center="msg" src="../../assets/images/github.png" alt="github-account">
       </span>
     </p>
-    <p v-else>User not found!</p>
+    <p class="warning" v-else>User not found!</p>
     <div class="user__input">
       <input class="text-area" v-model="userName" placeholder="username">
       <button class="btn" @click="emitUserNameToParent">Set</button>

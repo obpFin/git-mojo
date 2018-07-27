@@ -26,6 +26,7 @@
         <div v-if="user.avatar_url" class="score__image">
           <img v-bind:src="user.avatar_url" class="" alt="avatar">
           <h2 v-if="user.name" class="light">{{ user.name }}</h2>
+          <hr class="horizontal"/>
         </div>
         <div class="score__info">
           <p class="light text-lg" v-if="user.contribs.years">
@@ -115,7 +116,7 @@ export default {
           display: flex
           flex-direction: column
           align-items: center
-          padding: 45px
+          padding: 30px
 
         img
           width: 150px
@@ -127,6 +128,8 @@ export default {
         h2
           text-align: center
           margin-top: 10px
+        hr
+          margin: auto
       .score__info
         margin-left: 120px
         display: flex

@@ -2,7 +2,7 @@
 <div class="wrapper">
   <div class="content">
     <div class="inner">
-      <Sidebar />
+      <Sidebar :loggedIn="this.user.login"/>
       <User @setUser="setUser" v-bind:user="user"></User>
     </div>
   </div>

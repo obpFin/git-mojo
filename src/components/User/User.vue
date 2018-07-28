@@ -21,6 +21,7 @@ import UserInfo from "./UserInfo.vue";
 import { getUserData, getUserContribs } from "../../api/api";
 
 export default {
+  name: "user",
   props: ["user"],
   components: {
     UserInput,

@@ -2,8 +2,10 @@
 <div class="wrapper">
   <div class="content">
     <div class="inner">
-      <Sidebar :loggedIn="this.user.login"/>
-      <User @setUser="setUser" v-bind:user="user"></User>
+      <Sidebar :loggedIn="loggedIn"/>
+      <!-- <router-view></router-view> -->
+      <User v-if="loggedIn"/>
+      <UserInput v-else/>
     </div>
   </div>
 </div>
@@ -12,6 +14,7 @@
 <script>
 import Sidebar from "./Sidebar/Sidebar.vue";
 import User from "./User/User.vue";
+import UserInput from "./User/UserInput.vue";
 
 export default {
   name: "Mojo",
@@ -20,17 +23,20 @@ export default {
   },
   components: {
     Sidebar,
-    User
+    User,
+    UserInput
   },
   data: function() {
     return {
       user: {}
     };
   },
-  methods: {
-    setUser(user = {}) {
-      console.log("Mojo -- setUser", user);
-      this.user = user;
+  methods: {},
+  computed: {
+    loggedIn() {
+      if (this.$store.state.user) {
+        return this.$store.state.user.data.login;
+      }
     }
   }
 };

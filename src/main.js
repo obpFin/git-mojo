@@ -7,7 +7,6 @@ import "normalize.css";
 import "./assets/sass/main.sass";
 
 Vue.config.productionTip = false;
-Vue.use(Vuex);
 
 new Vue({
   router,

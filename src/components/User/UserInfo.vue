@@ -29,11 +29,11 @@
           <hr class="horizontal"/>
         </div>
         <div class="score__info">
-          <p class="light text-lg" v-if="user.contribs.years">
-            You have <span class="highlight">{{ user.contribs.years.length }}</span> years of contribution history
+          <p class="light text-lg" v-if="user.years">
+            You have <span class="highlight">{{ user.years.length }}</span> years of contribution history
           </p>
-          <p class="light text-lg" v-if="user.contribs.years">
-            You have <span class="highlight">{{ user.contribs.contributions.length }}</span> commits to public repositories
+          <p class="light text-lg" v-if="user.years">
+            You have <span class="highlight">{{ user.contributions.length }}</span> commits to public repositories
           </p>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default {
       showInfo: false
     };
   },
-  props: ["user"],
+  props: [],
   methods: {
     allowBlog(maxChars) {
       if (this.user.blog) {
@@ -59,7 +59,15 @@ export default {
       }
     }
   },
-  mounted() {
+  computed: {
+    user() {
+      return this.$store.state.user.data;
+    },
+    fetchingUser() {
+      return this.$store.state.user.fetchUser;
+    }
+  },
+  mounted: function() {
     if (this.user.name || this.user.login) {
       this.showWelcome = true;
       setTimeout(() => {

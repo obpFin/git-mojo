@@ -1,7 +1,14 @@
 <template>
   <div class="sidebar">
-    <a id="mojo" href="/"><img src="../../assets/images/mojo.png" alt="mojo"></a>
-    <a v-if="loggedIn" class="link" href="/"><img v-tooltip.top-center="msg" src="../../assets/images/home.png" alt="home"></a>
+    <router-link to="/mojo">
+      <a id="mojo"><img src="../../assets/images/mojo.png" alt="mojo"></a>
+    </router-link>
+    <router-link v-if="loggedIn" to="/user" class="link" src="../../assets/images/home.png" alt="home">
+      <img src="../../assets/images/home.png" alt="home">
+    </router-link>
+    <router-link to="/info" class="link">
+      <img src="../../assets/images/info.png" alt="info">
+    </router-link>
   </div>
 </template>
 
@@ -37,7 +44,7 @@ export default {
           width: $sidebar-width-small
           height: $sidebar-width-small
     .link
-      margin: 40px auto
+      margin: 20px auto
       img
         width: $sidebar-width / 2.5
         height: $sidebar-width / 2.5

@@ -4,39 +4,41 @@
     <p 
       v-if="userNotFound == false">Please input your 
       <span>
-        <img id="gh-logo" v-tooltip.top-center="msg" src="../../assets/images/github.png" alt="github-account">
+        <img id="gh-logo" v-tooltip.top-center="'Github'" src="../../assets/images/github.png" alt="github-account">
       </span>
     </p>
     <p class="warning" v-else>User not found!</p>
     <div class="user__input">
-      <input class="text-area" v-model="userName" v-on:keyup.enter="emitUserNameToParent" placeholder="username">
-      <button class="btn" @click="emitUserNameToParent">Set</button>
+      <input class="text-area" v-model="userName" v-on:keyup.enter="onGetUser" placeholder="username">
+      <button class="btn" @click="onGetUser">Set</button>
     </div>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import VTooltip from 'v-tooltip';
+import VTooltip from "v-tooltip";
 Vue.use(VTooltip);
 
 export default {
   name: "user-input",
   data: function() {
     return {
-      userName: "",
-      msg: "Github"
+      userName: ""
     };
   },
   components: {
     VTooltip
   },
-  props: ["userNotFound"],
+  props: [],
   methods: {
-    emitUserNameToParent() {
-      console.log("UserInput -- emitUserNameToParent", this.userName);
-      this.$emit("setUserName", this.userName);
-      this.userName = "";
+    onGetUser() {
+      this.$store.dispatch("getUser", this.userName);
+    }
+  },
+  computed: {
+    userNotFound() {
+      return this.$store.state.user.userNotFound;
     }
   }
 };
@@ -50,6 +52,8 @@ export default {
   #gh-logo
     transform: translateY(20px)
   .container
+    @include absolutecenter()
+
     background: $primary-light
     padding: $base-margin
     border-radius: 5px

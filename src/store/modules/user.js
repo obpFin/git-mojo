@@ -7,7 +7,8 @@ const state = {
     contribs: {}
   },
   fetchUser: false,
-  userNotFound: false
+  userNotFound: false,
+  isWelcomed: false
 };
 
 //actions
@@ -36,6 +37,9 @@ const actions = {
         commit("setFetchUser", false);
       })
       .catch(reason => console.log(reason));
+  },
+  welcomeUser({ commit }, status) {
+    commit("setUserWelcomed", status);
   }
 };
 //mutations
@@ -48,6 +52,9 @@ const mutations = {
   },
   setUserNotFound(status) {
     state.userNotFound = status;
+  },
+  setUserWelcomed(status) {
+    state.isWelcomed = status;
   }
 };
 

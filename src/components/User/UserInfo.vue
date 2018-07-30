@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="fade">
-      <h1 class="welcome-text" v-if="showWelcome">Welcome {{ user.name || user.login }}</h1>
+      <h1 class="welcome-text" v-if="!isWelcomed">Welcome {{ user.name || user.login }}</h1>
     </transition>
     <transition name="fade">
     <div v-if="showInfo" class="user-info">
@@ -47,7 +47,6 @@ export default {
   name: "user-info",
   data() {
     return {
-      showWelcome: false,
       showInfo: false
     };
   },
@@ -65,13 +64,22 @@ export default {
     },
     fetchingUser() {
       return this.$store.state.user.fetchUser;
+    },
+    isWelcomed() {
+      return this.$store.state.user.isWelcomed;
     }
   },
   mounted: function() {
     if (this.user.name || this.user.login) {
-      this.showWelcome = true;
+      //show info immediately after initial login
+      if (this.isWelcomed) {
+        this.showInfo = true;
+      }
+      //else show welcome text for 3 secs
       setTimeout(() => {
-        this.showWelcome = false;
+        if (!this.isWelcomed) {
+          this.$store.dispatch("welcomeUser", true);
+        }
         this.showInfo = true;
       }, 3000);
     }

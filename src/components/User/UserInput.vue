@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-if="InputPending" class="container">
     <h1 v-if="userNotFound == false">Welcome</h1>
     <p 
       v-if="userNotFound == false">Please input your 
@@ -24,7 +24,8 @@ export default {
   name: "user-input",
   data: function() {
     return {
-      userName: ""
+      userName: "",
+      InputPending: true
     };
   },
   components: {
@@ -33,6 +34,7 @@ export default {
   props: [],
   methods: {
     onGetUser() {
+      this.InputPending = false;
       this.$store.dispatch("getUser", this.userName);
     }
   },

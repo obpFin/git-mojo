@@ -1,11 +1,11 @@
 <template>
   <div class="user">
     <transition name="fade">
-      <div v-if="userData" class="user__info" key="info">
+      <div v-if="userName" class="user__info" key="info">
         <UserInfo/>
       </div>
-      <div v-else-if="fetchingUser == false" class="user__name" key="input">
-        <!-- <UserInput v-bind:userName="userName" v-bind:userNotFound="userNotFound"/> -->
+      <div v-else class="user__name" key="input">
+        <UserInput/>
       </div>
     </transition>  
   </div>
@@ -29,8 +29,8 @@ export default {
   },
   methods: {},
   computed: {
-    userData() {
-      return this.$store.state.user.data;
+    userName() {
+      return this.$store.state.user.data.login;
     }
   }
 };

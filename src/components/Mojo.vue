@@ -3,13 +3,14 @@
   <div class="content">
     <div class="inner">
       <Sidebar :loggedIn="loggedIn"/>
-      <!-- <router-view></router-view> -->
+      <router-view>
+        <User v-if="loggedIn" key="user"/>
+      </router-view>
       <transition name="fade">
         <div class="user__load" v-if="fetchingUser" key="load">
           <Spinner size="big" line-fg-color="#ff7043"/>
         </div>
-        <User v-else-if="loggedIn" key="user"/>
-        <UserInput v-else key="user-input"/>
+        <!-- <UserInput v-else key="user-input"/> -->
       </transition>
     </div>
   </div>
@@ -34,9 +35,7 @@ export default {
     Spinner
   },
   data: function() {
-    return {
-      user: {}
-    };
+    return {};
   },
   methods: {},
   computed: {

@@ -1,12 +1,12 @@
 <template>
   <div class="sidebar">
-    <router-link to="/mojo">
+    <router-link to="/">
       <a id="mojo"><img src="../../assets/images/mojo.png" alt="mojo"></a>
     </router-link>
-    <router-link v-if="loggedIn" to="/user" class="link" src="../../assets/images/home.png" alt="home">
+    <router-link v-if="isLoggedIn" to="/user" class="link">
       <img src="../../assets/images/home.png" alt="home">
     </router-link>
-    <router-link to="/info" class="link">
+    <router-link v-if="isLoggedIn" to="/info" class="link">
       <img src="../../assets/images/info.png" alt="info">
     </router-link>
   </div>
@@ -18,7 +18,7 @@ export default {
   data() {
     return {};
   },
-  props: ["loggedIn"]
+  props: ["isLoggedIn"]
 };
 </script>
 

@@ -18,7 +18,7 @@ import UserInfo from "./UserInfo.vue";
 
 export default {
   name: "user",
-  props: ["user"],
+  props: [],
   components: {
     UserInput,
     UserInfo,

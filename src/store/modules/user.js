@@ -2,10 +2,7 @@ import { getUserData, getUserContribs } from "../../api/api";
 
 //initial state
 const state = {
-  data: {
-    userName: "",
-    contribs: {}
-  },
+  data: {},
   fetchUser: false,
   userNotFound: false,
   isWelcomed: false
@@ -57,10 +54,17 @@ const mutations = {
     state.isWelcomed = status;
   }
 };
+//getters
+const getters = {
+  isLoggedIn(state) {
+    return state.data.login != null;
+  }
+};
 
 export default {
   namespaced: false,
   state,
   actions,
-  mutations
+  mutations,
+  getters
 };

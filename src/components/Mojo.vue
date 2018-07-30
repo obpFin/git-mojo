@@ -2,15 +2,14 @@
 <div class="wrapper">
   <div class="content">
     <div class="inner">
-      <Sidebar :loggedIn="loggedIn"/>
+      <Sidebar :isLoggedIn="isLoggedIn"/>
       <router-view>
-        <User v-if="loggedIn" key="user"/>
+        <User key="user"/>
       </router-view>
       <transition name="fade">
         <div class="user__load" v-if="fetchingUser" key="load">
           <Spinner size="big" line-fg-color="#ff7043"/>
         </div>
-        <!-- <UserInput v-else key="user-input"/> -->
       </transition>
     </div>
   </div>
@@ -42,10 +41,8 @@ export default {
     fetchingUser() {
       return this.$store.state.user.fetchUser;
     },
-    loggedIn() {
-      if (this.$store.state.user) {
-        return this.$store.state.user.data.login;
-      }
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
     }
   }
 };

@@ -13,5 +13,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="sass">
+  @import "../../assets/sass/main"
+  @import "../../assets/sass/mixins/mixins"
+  .info
+    @include absolutecenter()
+
 </style>

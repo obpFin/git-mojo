@@ -5,7 +5,9 @@ Review your github contributions & more!
 ## Tech
 ```
 Vue.js
-SASS
+Vue Router
+VueX
+SASS w/ BEM
 CircleCI
 AWS S3
 ```

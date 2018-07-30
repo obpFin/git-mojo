@@ -1,9 +1,6 @@
 <template>
   <div class="user">
     <transition name="fade">
-      <div class="user__load" v-if="fetchingUser" key="load">
-        <Spinner size="big" line-fg-color="#ff7043"/>
-      </div>
       <div v-if="userData" class="user__info" key="info">
         <UserInfo/>
       </div>
@@ -34,9 +31,6 @@ export default {
   computed: {
     userData() {
       return this.$store.state.user.data;
-    },
-    fetchingUser() {
-      return this.$store.state.user.fetchUser;
     }
   }
 };
@@ -48,14 +42,8 @@ export default {
 
   .user
     background: $primary-lighter
-    .user__name, .user__load
-      @include absolutecenter()
-      // @media only screen and (max-width: 420px)
-      //   position: static
-      //   transform: none!important
-      //   width: auto
-
     .user__name
+      @include absolutecenter()
       @media only screen and (min-width: 1025px)
         left: 40%
       @media only screen and (max-width: 420px)

@@ -28,7 +28,6 @@ const actions = {
           commit("setFetchUser", false);
           commit("setUserNotFound", true);
         }
-        console.log("dataToCommit", data);
         commit("setUser", {
           ...data[0],
           ...data[1]

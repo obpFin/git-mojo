@@ -4,8 +4,13 @@
     <div class="inner">
       <Sidebar :loggedIn="loggedIn"/>
       <!-- <router-view></router-view> -->
-      <User v-if="loggedIn"/>
-      <UserInput v-else/>
+      <transition name="fade">
+        <div class="user__load" v-if="fetchingUser" key="load">
+          <Spinner size="big" line-fg-color="#ff7043"/>
+        </div>
+        <User v-else-if="loggedIn" key="user"/>
+        <UserInput v-else key="user-input"/>
+      </transition>
     </div>
   </div>
 </div>
@@ -15,6 +20,7 @@
 import Sidebar from "./Sidebar/Sidebar.vue";
 import User from "./User/User.vue";
 import UserInput from "./User/UserInput.vue";
+import Spinner from "vue-simple-spinner";
 
 export default {
   name: "Mojo",
@@ -24,7 +30,8 @@ export default {
   components: {
     Sidebar,
     User,
-    UserInput
+    UserInput,
+    Spinner
   },
   data: function() {
     return {
@@ -33,6 +40,9 @@ export default {
   },
   methods: {},
   computed: {
+    fetchingUser() {
+      return this.$store.state.user.fetchUser;
+    },
     loggedIn() {
       if (this.$store.state.user) {
         return this.$store.state.user.data.login;
@@ -65,5 +75,8 @@ export default {
 
     .content
       background: $primary-light
+      .inner
+        .user__load
+          @include absolutecenter()
 
 </style>

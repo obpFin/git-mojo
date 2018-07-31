@@ -1,6 +1,6 @@
 # git-mojo
 
-Review your github contributions & more!
+Review your Github contributions history!
 
 ## Tech
 ```
@@ -10,6 +10,7 @@ VueX
 SASS w/ BEM
 CircleCI
 AWS S3
+Eslint/Prettier
 ```
 
 ## Project setup
@@ -30,9 +31,4 @@ yarn run build
 ### Lints and fixes files
 ```
 yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
 ```

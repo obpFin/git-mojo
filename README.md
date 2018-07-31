@@ -2,6 +2,8 @@
 
 Review your Github contributions history!
 
+http://git-mojo.s3-website.eu-west-2.amazonaws.com
+
 ## Tech
 ```
 Vue.js

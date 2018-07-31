@@ -60,6 +60,7 @@ export default {
     max-width: $app-max-width
     max-height: $app-max-height
     min-width: 320px
+    overflow: auto
 
     @media only screen and (max-width: 420px)
       position: static

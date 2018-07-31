@@ -22,13 +22,13 @@
           <p>{{ user.blog }}</p>
         </div>
       </div>
-      <div class="score">
-        <div v-if="user.avatar_url" class="score__image">
+      <div class="history">
+        <div v-if="user.avatar_url" class="history__image">
           <img v-bind:src="user.avatar_url" class="" alt="avatar">
           <h2 v-if="user.name" class="light">{{ user.name }}</h2>
           <hr class="horizontal"/>
         </div>
-        <div class="score__info">
+        <div class="history__info">
           <p class="light text-lg" v-if="user.years">
             You have <span class="highlight">{{ user.years.length }}</span> years of contribution history
           </p>
@@ -36,6 +36,14 @@
             You have <span class="highlight">{{ user.contributions.length }}</span> commits to public repositories
           </p>
         </div>
+      </div>
+      <div class="commits">
+        <h2>Commit history</h2>
+        <ul>
+          <li v-for="year in years" :key="year.year">
+            {{ year.year }} <span>{{ year.total }}</span> 
+          </li>
+        </ul>
       </div>
     </div>
     </transition>
@@ -67,6 +75,9 @@ export default {
     },
     isWelcomed() {
       return this.$store.state.user.isWelcomed;
+    },
+    years() {
+      return this.$store.state.user.data.years;
     }
   },
   mounted: function() {
@@ -119,13 +130,13 @@ export default {
           @media only screen and (max-width: 420px)
             margin-left: 20px
             
-    .score
+    .history
       padding: $base-margin 0
       display: flex
       border-bottom: 1px $primary-light solid
       @media only screen and (max-width: 420px)
         flex-direction: column
-      .score__image 
+      .history__image 
         display: inline-block
         padding: 40px
         @media only screen and (max-width: 420px)
@@ -146,7 +157,7 @@ export default {
           margin-top: 10px
         hr
           margin: auto
-      .score__info
+      .history__info
         margin-left: 120px
         display: flex
         flex-direction: column
@@ -160,5 +171,29 @@ export default {
           font-weight: bold
           font-size: $text-lg
           text-shadow: 1px 0 5px black
+    .commits
+      h2
+        padding: 20px
+      ul
+        padding-left: 40px
+        > li 
+          display: inline-block
+          zoom: 1
+          padding: 0 20px
+          width: 40px
+          span
+            transform: translateY(5px)
+            display: inline-block
+            color: $primary-red
+            font-weight: bold
+            font-size: $text-lg
+            text-shadow: 1px 0 5px black
+            @media only screen and (max-width: 420px)
+              transform: none
+              padding-bottom: 10px
+              width: 20px
+
+
+
 
 </style>

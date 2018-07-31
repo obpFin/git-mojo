@@ -44,7 +44,7 @@ export default {
           width: $sidebar-width-small
           height: $sidebar-width-small
     .link
-      margin: 20px auto
+      margin: 40px auto
       img
         width: $sidebar-width / 2.5
         height: $sidebar-width / 2.5

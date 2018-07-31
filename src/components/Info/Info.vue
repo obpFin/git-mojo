@@ -1,11 +1,13 @@
 <template>
+  <transition name="fade">
   <div class="info">
     <p>Info</p>
   </div>
+  </transition>
 </template>
 
 <script>
-export default {
+export default { 
   name: "Info",
   data: function() {
     return {};

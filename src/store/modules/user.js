@@ -1,4 +1,4 @@
-import { getUserData, getUserContribs } from "../../api/api";
+import { fetchUserData, fetchUserContribs, fetchUserOrgs } from "../../api/api";
 
 //initial state
 const state = {
@@ -18,8 +18,8 @@ const actions = {
     } else if (userName && state.userNotFound) {
       commit("setUserNotFound", false);
     }
-    const userData = getUserData(userName);
-    const userContribs = getUserContribs(userName);
+    const userData = fetchUserData(userName);
+    const userContribs = fetchUserContribs(userName);
     Promise.all([userData, userContribs])
       .then(data => {
         if (!data[0].login) {
@@ -30,6 +30,11 @@ const actions = {
           ...data[0],
           ...data[1]
         });
+        if (data[0].organizations_url) {
+          fetchUserOrgs(data[0].organizations_url).then(orgs => {
+            commit("setUserOrgs", orgs);
+          });
+        }
         console.log("UserData", state);
         commit("setFetchUser", false);
       })
@@ -43,6 +48,9 @@ const actions = {
 const mutations = {
   setUser(state, user) {
     state.data = { ...user };
+  },
+  setUserOrgs(state, orgs) {
+    state.data = { ...state.data, orgs };
   },
   setFetchUser(state, status) {
     state.fetchUser = status;

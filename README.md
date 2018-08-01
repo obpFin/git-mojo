@@ -1,6 +1,6 @@
 # git-mojo
 
-Review your Github contributions history!
+How's your github mojo?
 
 http://git-mojo.s3-website.eu-west-2.amazonaws.com
 

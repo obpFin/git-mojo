@@ -1,12 +1,14 @@
 <template>
   <transition name="fade">
   <div class="info">
+    <hr class="horizontal">
     <h1>Git Mojo</h1>
+    <hr class="horizontal">
     <ul>
-      <hr class="vertical">
-      <li class="text">By <a href="https://github.com/obpFin/git-mojo" target="_blank">Oskari Peltonen </a>2018</li>
-      <li class="text">Made with <a href="https://vuejs.org"><img src="../../assets/logo.png" alt="Vue"></a></li>
-      <li class="text">Made in <a href="https://www.instagram.com/p/BlptbDQgtXq/?taken-by=obp_fi" target="_blank"><img src="../../assets/images/camera-retro.png" alt=""></a></li>
+      <li class="text">By <a href="https://github.com/obpFin" target="_blank">Oskari Peltonen </a>2018</li>
+      <li class="text lower">Made with <a href="https://vuejs.org" target="_blank"><img src="../../assets/logo.png" alt="Vue"></a></li>
+      <li class="text lower">Repository <a href="https://github.com/obpFin/git-mojo" target="_blank"><img src="../../assets/images/github.png" alt="Vue"></a></li>
+      <!-- <li class="text">Made in <a href="https://www.instagram.com/p/BlptbDQgtXq/?taken-by=obp_fi" target="_blank"><img src="../../assets/images/camera-retro.png" alt=""></a></li> -->
     </ul>
   </div>
   </transition>
@@ -27,10 +29,17 @@ export default {
   .info
     @include absolutecenter()
     text-align: center
+    hr.horizontal
+      @include absolutecenter()
+      &:nth-of-type(2)
+        top: 0
     h1, li
       margin: 40px 0
     ul
       > li
+        &.lower
+          transform: translateY(40px)
+
         a
           color: $primary-red
           text-decoration: none

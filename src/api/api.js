@@ -1,7 +1,7 @@
 const ghSourceUrl = "https://api.github.com";
 const contribsSourceUrl = "https://github-contributions-api.now.sh/v1";
 
-const getUserData = userName => {
+const fetchUserData = userName => {
   return new Promise((resolve, reject) => {
     if (typeof userName === "string") {
       fetch(`${ghSourceUrl}/users/${userName}`)
@@ -15,7 +15,7 @@ const getUserData = userName => {
   });
 };
 
-const getUserContribs = userName => {
+const fetchUserContribs = userName => {
   return new Promise((resolve, reject) => {
     if (typeof userName === "string") {
       fetch(`${contribsSourceUrl}/${userName}`)
@@ -29,4 +29,18 @@ const getUserContribs = userName => {
   });
 };
 
-export { getUserData, getUserContribs };
+const fetchUserOrgs = url => {
+  return new Promise((resolve, reject) => {
+    if (typeof url === "string") {
+      fetch(url)
+        .then(stream => stream.json())
+        .then(data => {
+          console.log(data);
+          resolve(data);
+        })
+        .catch(error => reject(() => console.log(error)));
+    }
+  });
+};
+
+export { fetchUserData, fetchUserContribs, fetchUserOrgs };

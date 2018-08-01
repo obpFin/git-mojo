@@ -32,13 +32,19 @@
           <p class="light text-lg" v-if="user.years">
             You have <span class="highlight">{{ user.years.length }}</span> years of contribution history
           </p>
-          <p class="light text-lg" v-if="user.years">
-            You have <span class="highlight">{{ user.contributions.length }}</span> commits to public repositories
+          <p class="light text-lg" v-if="user.contributions">
+            You have <span class="highlight">{{ user.contributions.length }}</span> contributions total
+          </p>
+          <p class="light text-lg" v-if="user.followers > 0">
+            You have <span class="highlight">{{ user.public_repos }}</span> public repositories with <span class="highlight">{{ user.followers }}</span> followers
+          </p>
+          <p class="light text-lg" v-else>
+            You have <span class="highlight">{{ user.public_repos }}</span> public repositories
           </p>
         </div>
       </div>
       <div class="commits">
-        <h2>Commit history</h2>
+        <h2>Public contribution history</h2>
         <ul>
           <li v-for="year in years" :key="year.year">
             {{ year.year }} <span>{{ year.total }}</span> 

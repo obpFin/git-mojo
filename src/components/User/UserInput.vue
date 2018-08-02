@@ -60,7 +60,7 @@ export default {
   #gh-logo
     transform: translateY(20px)
   .container
-    @include absolutecenter()
+    @include abs-pos()
 
     background: $primary-light
     padding: $base-margin

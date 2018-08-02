@@ -9,7 +9,7 @@
     </p>
     <p class="warning" v-else>User not found!</p>
     <div class="user__input">
-      <input class="text-area" v-model="userName" v-on:keyup.enter="onGetUser" placeholder="username">
+      <input class="text-area" v-focus v-model="userName" v-on:keyup.enter="onGetUser" placeholder="username">
       <button class="btn" @click="onGetUser">Set</button>
     </div>
   </div>
@@ -42,6 +42,13 @@ export default {
     userNotFound() {
       return this.$store.state.user.userNotFound;
     }
+  },
+  directives: {
+    focus: {
+      inserted: function(el) {
+        el.focus();
+      }
+    }
   }
 };
 </script>
@@ -49,7 +56,6 @@ export default {
 <style scoped lang="sass">
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
-  @import "../../assets/sass/modules/tooltip.sass"
 
   #gh-logo
     transform: translateY(20px)

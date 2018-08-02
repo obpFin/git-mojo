@@ -22,7 +22,7 @@
           <p>{{ user.blog }}</p>
           <hr class="vertical"/>
         </div>
-        <div v-if="user.orgs" class="top__item">
+        <div v-if="user.orgs" class="top__item orgs">
           <img class="top__item--img" v-bind:src="org.avatar_url" v-for="org in orgs" :key="org.id" v-tooltip.top-center="org.login" v-if="orgs"/>
         </div>
       </div>
@@ -136,12 +136,22 @@ export default {
         &.blog
           @media only screen and (max-width: 420px)
             display: none
+        &.orgs
+          @media only screen and (max-width: 420px)
+            flex-direction: column
+            justify-content: space-around
+            height: 50px
         .top__item--img
           width: 40px
           height: auto
           margin-right: 40px
+          @media only screen and (max-width: 420px)
+            margin: 0
+            width: 20px
         p
           width: min-content
+          @media only screen and (max-width: 420px)
+            font-size: 10px
         hr
           margin-left: 40px
           @media only screen and (max-width: 420px)

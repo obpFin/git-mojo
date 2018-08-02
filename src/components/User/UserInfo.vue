@@ -6,20 +6,24 @@
     <transition name="fade">
     <div v-if="showInfo" class="user-info">
       <div class="top">
-        <div class="item">
+        <div class="top__item">
           <p>{{ user.login }}</p>
           <hr class="vertical"/>
         </div>
-        <div v-if="user.company" class="item">
+        <div v-if="user.company" class="top__item">
           <p>{{ user.company }}</p>
           <hr class="vertical"/>
         </div>
-        <div v-if="user.location" class="item">
+        <div v-if="user.location" class="top__item">
           <p>{{ user.location }}</p>
           <hr class="vertical"/>
         </div>
-        <div v-if="user.blog && this.allowBlog(50)" class="item blog">
+        <div v-if="user.blog && this.allowBlog(50)" class="top__item blog">
           <p>{{ user.blog }}</p>
+          <hr class="vertical"/>
+        </div>
+        <div v-if="user.orgs" class="top__item">
+          <img class="top__item--img" v-bind:src="org.avatar_url" v-for="org in orgs" :key="org.id" v-tooltip.top-center="org.login" v-if="orgs"/>
         </div>
       </div>
       <div class="history">
@@ -84,6 +88,9 @@ export default {
     },
     years() {
       return this.$store.state.user.data.years;
+    },
+    orgs() {
+      return this.$store.state.user.data.orgs;
     }
   },
   mounted: function() {
@@ -120,7 +127,7 @@ export default {
       border-bottom: 1px $primary-light solid
       width: 100%
       height: 80px
-      .item
+      .top__item
         display: flex
         align-items: center
         margin-left: 40px
@@ -129,6 +136,10 @@ export default {
         &.blog
           @media only screen and (max-width: 420px)
             display: none
+        .top__item--img
+          width: 40px
+          height: auto
+          margin-right: 40px
         p
           width: min-content
         hr

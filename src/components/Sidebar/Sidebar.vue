@@ -1,10 +1,13 @@
 <template>
   <div class="sidebar">
-    <router-link to="/">
-      <a id="mojo"><img src="../../assets/images/mojo.png" alt="mojo"></a>
+    <router-link to="/" id="mojo">
+      <a><img src="../../assets/images/mojo.png" alt="mojo"></a>
     </router-link>
     <router-link v-if="isLoggedIn" to="/user" class="link">
       <img src="../../assets/images/home.png" alt="home">
+    </router-link>
+    <router-link v-if="isLoggedIn" to="/user" class="link">
+      <img class="vs" src="../../assets/images/vs.png" alt="home">
     </router-link>
     <router-link v-if="isLoggedIn" to="/info" class="link">
       <img src="../../assets/images/info.png" alt="info">
@@ -37,6 +40,7 @@ export default {
       width: $sidebar-width-small
       height: 100vh
     #mojo
+      padding-top: 10px
       img
         width: $sidebar-width
         height: $sidebar-width
@@ -51,6 +55,12 @@ export default {
         @media only screen and (max-width: 420px)
           width: $sidebar-width-small / 2.5
           height: $sidebar-width-small / 2.5
+        &.vs
+          width: $sidebar-width / 1.5
+          @media only screen and (max-width: 420px)
+            width: $sidebar-width-small / 1.75
+            height: $sidebar-width-small / 1.75
+
 
 
 </style>

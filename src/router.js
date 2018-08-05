@@ -2,9 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "./store";
 
-import Mojo from "./components/Mojo.vue";
 import User from "./components/User/User.vue";
 import Info from "./components/Info/Info.vue";
+import Versus from "./components/Versus/Versus.vue";
 
 Vue.use(VueRouter);
 
@@ -23,6 +23,12 @@ const router = new VueRouter({
       path: "/info",
       name: "info",
       component: Info,
+      meta: { auth: true }
+    },
+    {
+      path: "/versus",
+      name: "versus",
+      component: Versus,
       meta: { auth: true }
     }
   ]

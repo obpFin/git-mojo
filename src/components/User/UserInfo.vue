@@ -200,7 +200,7 @@ export default {
           text-shadow: 1px 0 5px black
     .commits
       h2
-        padding: 20px
+        padding: 40px
       ul
         padding-left: 40px
         > li 

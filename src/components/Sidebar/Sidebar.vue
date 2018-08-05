@@ -6,7 +6,7 @@
     <router-link v-if="isLoggedIn" to="/user" class="link">
       <img src="../../assets/images/home.png" alt="home">
     </router-link>
-    <router-link v-if="isLoggedIn" to="/user" class="link">
+    <router-link v-if="isLoggedIn" to="/versus" class="link">
       <img class="vs" src="../../assets/images/vs.png" alt="home">
     </router-link>
     <router-link v-if="isLoggedIn" to="/info" class="link">

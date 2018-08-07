@@ -5,7 +5,13 @@ const fetchUserData = userName => {
   return new Promise((resolve, reject) => {
     if (typeof userName === "string") {
       fetch(`${ghSourceUrl}/users/${userName}`)
-        .then(stream => stream.json())
+        .then(stream => {
+          if (stream.ok) {
+            return stream.json();
+          } else {
+            throw new Error("User not found");
+          }
+        })
         .then(data => {
           console.log("user data: ", data);
           resolve(data);

@@ -22,10 +22,6 @@ const actions = {
     const userContribs = fetchUserContribs(userName);
     Promise.all([userData, userContribs])
       .then(data => {
-        if (!data[0].login) {
-          commit("setFetchUser", false);
-          commit("setUserNotFound", true);
-        }
         commit("setUser", {
           ...data[0],
           ...data[1]
@@ -38,7 +34,11 @@ const actions = {
         console.log("UserData", state);
         commit("setFetchUser", false);
       })
-      .catch(reason => console.log(reason));
+      .catch(reason => {
+        console.log(reason);
+        commit("setFetchUser", false);
+        commit("setUserNotFound", true);
+      });
   },
   welcomeUser({ commit }, status) {
     commit("setUserWelcomed", status);
@@ -55,7 +55,7 @@ const mutations = {
   setFetchUser(state, status) {
     state.fetchUser = status;
   },
-  setUserNotFound(status) {
+  setUserNotFound(state, status) {
     state.userNotFound = status;
   },
   setUserWelcomed(status) {

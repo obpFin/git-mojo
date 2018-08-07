@@ -1,13 +1,12 @@
 <template>
   <div v-if="InputPending" class="container">
-    <h1 v-if="userNotFound == false">Welcome</h1>
-    <p 
-      v-if="userNotFound == false">Please input your 
+    <h1>Welcome</h1>
+    <p>Please input your 
       <span>
         <img id="gh-logo" v-tooltip.top-center="'Github'" src="../../assets/images/github.png" alt="github-account">
       </span>
     </p>
-    <p class="warning" v-else>User not found!</p>
+    <p class="warning" v-if="userNotFound == true">User not found!</p>
     <div class="user__input">
       <input class="text-area" v-focus v-model="userName" v-on:keyup.enter="onGetUser" placeholder="username">
       <button class="btn" @click="onGetUser">Set</button>
@@ -41,6 +40,13 @@ export default {
   computed: {
     userNotFound() {
       return this.$store.state.user.userNotFound;
+    }
+  },
+  watch: {
+    userNotFound: function(notFound) {
+      if (notFound) {
+        this.InputPending = true;
+      }
     }
   },
   directives: {

@@ -71,7 +71,6 @@ export default {
       max-height: 100%
 
     .content
-      background: $primary-light
       .inner
         .user__load
           @include absolutecenter()

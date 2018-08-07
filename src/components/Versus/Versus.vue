@@ -1,14 +1,24 @@
 <template>
   <transition name="fade">
     <div class="versus">
-      <p>ADSADFsd </p>
+      <h1>VS Mode </h1>
+      <User :userImg="user.avatar_url" :userName="user.login"/>
     </div>
   </transition>
 </template>
 
 <script>
+import User from "./User.vue";
 export default {
-  name: "versus"
+  name: "versus",
+  components: {
+    User
+  },
+  computed: {
+    user() {
+      return this.$store.state.user.data;
+    }
+  }
 };
 </script>
 
@@ -17,6 +27,8 @@ export default {
   @import "../../assets/sass/mixins/mixins"
   .versus
     margin-left: $sidebar-width
+    background: $primary-lighter
+    padding: $base-margin
     @media only screen and (max-width: 420px)
       margin-left: $sidebar-width-small
   

@@ -5,6 +5,7 @@
       <hr class="vertical"/>
       <button class="btn">Add Opponent</button>
       <p>Work In Progress</p>
+      <button disabled="disabled" class="btn red">GO</button>
     </div>
   </transition>
 </template>

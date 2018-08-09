@@ -17,11 +17,17 @@ export default {
   @import "../../assets/sass/mixins/mixins"
   .user
     display: inline-block
-    padding-top: $base-margin
+    margin: auto 0
+    @media only screen and (max-width: 420px)
+      padding-top: 0
+
     .user__img
-      width: 100px
+      width: 120px
       height: auto
       border-radius: 100px
+      @media only screen and (max-width: 420px)
+        width: 80px
+
     .user__name
       text-align: center
 

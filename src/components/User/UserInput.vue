@@ -76,6 +76,8 @@ export default {
     .user__input
       text-align: center
       margin-top: $base-margin
+      input
+        padding-left: 5px
       button
         margin: auto
         margin-top: $base-margin

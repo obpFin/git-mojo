@@ -13,7 +13,6 @@ const fetchUserData = userName => {
           }
         })
         .then(data => {
-          console.log("user data: ", data);
           resolve(data);
         })
         .catch(error => reject(() => console.log(error)));
@@ -35,13 +34,13 @@ const fetchUserContribs = userName => {
   });
 };
 
-const fetchUserOrgs = url => {
+const fetchData = url => {
   return new Promise((resolve, reject) => {
     if (typeof url === "string") {
       fetch(url)
         .then(stream => stream.json())
         .then(data => {
-          console.log(data);
+          // console.log(data);
           resolve(data);
         })
         .catch(error => reject(() => console.log(error)));
@@ -49,4 +48,4 @@ const fetchUserOrgs = url => {
   });
 };
 
-export { fetchUserData, fetchUserContribs, fetchUserOrgs };
+export { fetchUserData, fetchUserContribs, fetchData };

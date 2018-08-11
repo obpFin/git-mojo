@@ -149,8 +149,8 @@ export default {
             margin: 0
             width: 20px
         p
-          width: min-content
           @media only screen and (max-width: 420px)
+            width: min-content
             font-size: 10px
         hr
           margin-left: 40px

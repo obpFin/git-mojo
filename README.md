@@ -2,7 +2,7 @@
 
 How's your github mojo?
 
-http://git-mojo.s3-website.eu-west-2.amazonaws.com
+https://www.ghmojo.com
 
 ## Tech
 ```
@@ -10,6 +10,7 @@ Vue.js
 Vue Router
 VueX
 SASS w/ BEM
+Jest
 CircleCI
 AWS S3
 Eslint/Prettier
@@ -28,6 +29,11 @@ yarn run serve
 ### Compiles and minifies for production
 ```
 yarn run build
+```
+
+### Test
+```
+yarn run test
 ```
 
 ### Lints and fixes files

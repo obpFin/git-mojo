@@ -36,6 +36,7 @@ yarn run build
 ```
 
 ### Test
+
 ```
 yarn run test
 ```
@@ -45,5 +46,3 @@ yarn run test
 ```
 yarn run lint
 ```
-
-Moi Rintsi

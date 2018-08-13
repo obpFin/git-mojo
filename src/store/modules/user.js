@@ -1,4 +1,5 @@
-import { fetchUserData, fetchUserContribs, fetchUserOrgs } from "../../api/api";
+import { fetchUserData, fetchUserContribs, fetchData } from "../../api/api";
+import { getFavoriteLang } from "../../utils/utils";
 
 //initial state
 const state = {
@@ -27,8 +28,15 @@ const actions = {
           ...data[1]
         });
         if (data[0].organizations_url) {
-          fetchUserOrgs(data[0].organizations_url).then(orgs => {
+          fetchData(data[0].organizations_url).then(orgs => {
             commit("setUserOrgs", orgs);
+          });
+        }
+        if (data[0].public_repos) {
+          console.log("fetch repos");
+          fetchData(data[0].repos_url).then(repos => {
+            const favLang = getFavoriteLang(repos);
+            commit("setUserFavLang", favLang);
           });
         }
         console.log("UserData", state);
@@ -58,8 +66,11 @@ const mutations = {
   setUserNotFound(state, status) {
     state.userNotFound = status;
   },
-  setUserWelcomed(status) {
+  setUserWelcomed(state, status) {
     state.isWelcomed = status;
+  },
+  setUserFavLang(state, favoriteLanguage) {
+    state.data = { ...state.data, favoriteLanguage };
   }
 };
 //getters

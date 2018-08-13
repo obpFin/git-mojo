@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <nav class="sidebar">
     <router-link to="/" id="mojo">
       <a><img src="../../assets/images/mojo.png" alt="mojo"></a>
     </router-link>
@@ -12,7 +12,7 @@
     <router-link v-if="isLoggedIn" to="/info" class="link">
       <img src="../../assets/images/info.png" alt="info">
     </router-link>
-  </div>
+  </nav>
 </template>
 
 <script>

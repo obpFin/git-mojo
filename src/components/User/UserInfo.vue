@@ -33,17 +33,20 @@
           <hr class="horizontal"/>
         </div>
         <div class="history__info">
-          <p class="light text-lg" v-if="user.years">
+          <p class="light" v-if="user.years">
             You have <span class="highlight">{{ user.years.length }}</span> years of contribution history
           </p>
-          <p class="light text-lg" v-if="user.contributions">
+          <p class="light" v-if="user.contributions">
             You have <span class="highlight">{{ user.contributions.length }}</span> contributions total
           </p>
-          <p class="light text-lg" v-if="user.followers > 0">
+          <p class="light" v-if="user.followers > 0">
             You have <span class="highlight">{{ user.public_repos }}</span> public repositories with <span class="highlight">{{ user.followers }}</span> followers
           </p>
-          <p class="light text-lg" v-else>
+          <p class="light" v-else>
             You have <span class="highlight">{{ user.public_repos }}</span> public repositories
+          </p>
+          <p class="light" v-if="user.favoriteLanguage">
+            Your favorite language is <span class="highlight">{{ user.favoriteLanguage }}</span> 
           </p>
         </div>
       </div>
@@ -197,7 +200,7 @@ export default {
           color: $primary-red
           font-weight: bold
           font-size: $text-lg
-          text-shadow: 1px 0 5px black
+          text-shadow: 1px 0 2px black
     .commits
       h2
         padding: 40px

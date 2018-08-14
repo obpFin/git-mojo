@@ -9,7 +9,7 @@
     <p class="warning" v-if="userNotFound == true">User not found!</p>
     <div class="user__input">
       <input class="text-area" v-focus v-model="userName" v-on:keyup.enter="onGetUser" placeholder="username">
-      <button class="btn" @click="onGetUser">Set</button>
+      <button class="btn" @click="onGetUser" :disabled="!userName">Set</button>
     </div>
   </div>
 </template>

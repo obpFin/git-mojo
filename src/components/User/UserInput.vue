@@ -6,7 +6,7 @@
         <img id="gh-logo" v-tooltip.top-center="'Github'" src="../../assets/images/github.png" alt="github-account">
       </span>
     </p>
-    <p class="warning" v-if="userNotFound == true">User not found!</p>
+    <p class="warning" v-if="userNotFound == true && userName">User not found!</p>
     <div class="user__input">
       <input class="text-area" v-focus v-model="userName" v-on:keyup.enter="onGetUser" placeholder="username">
       <button class="btn" @click="onGetUser" :disabled="!userName">Set</button>
@@ -33,8 +33,10 @@ export default {
   props: [],
   methods: {
     onGetUser() {
-      this.InputPending = false;
-      this.$store.dispatch("getUser", this.userName);
+      if (this.userName) {
+        this.InputPending = false;
+        this.$store.dispatch("getUser", this.userName);
+      }
     }
   },
   computed: {

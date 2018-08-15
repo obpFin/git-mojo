@@ -22,30 +22,32 @@ const actions = {
     const userData = fetchUserData(userName);
     const userContribs = fetchUserContribs(userName);
     Promise.all([userData, userContribs])
-      .then(data => {
-        commit("setUser", {
-          ...data[0],
-          ...data[1]
-        });
-        if (data[0].organizations_url) {
-          fetchData(data[0].organizations_url).then(orgs => {
-            commit("setUserOrgs", orgs);
+      .then(
+        data => {
+          commit("setUser", {
+            ...data[0],
+            ...data[1]
           });
+          if (data[0].organizations_url) {
+            fetchData(data[0].organizations_url).then(orgs => {
+              commit("setUserOrgs", orgs);
+            });
+          }
+          if (data[0].public_repos) {
+            fetchData(data[0].repos_url).then(repos => {
+              const favLang = getFavoriteLang(repos);
+              commit("setUserFavLang", favLang);
+            });
+          }
+          console.log("UserData", state);
+        },
+        error => {
+          commit("setUserNotFound", true);
+          console.log(error);
         }
-        if (data[0].public_repos) {
-          console.log("fetch repos");
-          fetchData(data[0].repos_url).then(repos => {
-            const favLang = getFavoriteLang(repos);
-            commit("setUserFavLang", favLang);
-          });
-        }
-        console.log("UserData", state);
+      )
+      .finally(() => {
         commit("setFetchUser", false);
-      })
-      .catch(reason => {
-        console.log(reason);
-        commit("setFetchUser", false);
-        commit("setUserNotFound", true);
       });
   },
   welcomeUser({ commit }, status) {

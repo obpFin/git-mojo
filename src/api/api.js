@@ -40,7 +40,6 @@ const fetchData = url => {
       fetch(url)
         .then(stream => stream.json())
         .then(data => {
-          // console.log(data);
           resolve(data);
         })
         .catch(error => reject(() => console.log(error)));

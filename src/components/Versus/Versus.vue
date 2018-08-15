@@ -4,9 +4,9 @@
       <User :userImg="user.avatar_url" :userName="user.login"/>
       <hr class="vertical"/>
       <button v-if="!showOpponentInput" @click="enableInput" class="btn">Add Opponent</button>
-      <input v-else class="text-area" type="text"/>
+      <input v-else v-model="opponentName" class="text-area" type="text"/>
       <p>Work In Progress</p>
-      <button disabled="disabled" @click="addOpponent" class="btn red">GO</button>
+      <button :disabled="!opponentName" @click="addOpponent" class="btn red">GO</button>
     </div>
   </transition>
 </template>
@@ -20,6 +20,7 @@ export default {
   },
   data: function() {
     return {
+      opponentName: "",
       showOpponentInput: false
     };
   },
@@ -28,7 +29,7 @@ export default {
       this.showOpponentInput = true;
     },
     addOpponent: function() {
-      this.$store.dispatch("getOpponent", this.userName);
+      this.$store.dispatch("getOpponent", this.opponentName);
     }
   },
   computed: {

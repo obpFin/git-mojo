@@ -2,7 +2,7 @@ import { fetchUserData, fetchUserContribs } from "../../api/api";
 
 //initial state
 const state = {
-  opponents: {},
+  opponents: [],
   loading: false,
   opponentNotFound: false
 };
@@ -41,10 +41,14 @@ const actions = {
 //mutations
 const mutations = {
   setOpponent(state, opponent) {
-    state.opponents = { ...state.opponents, opponent };
+    state.opponents = state.opponents.filter(opp => !opp.loading);
+    state.opponents.push(opponent);
   },
   setFetchOpponent(state, status) {
     state.loading = status;
+    if (status === true) {
+      state.opponents.push({ loading: true });
+    }
   },
   setOpponentNotFound(state, status) {
     state.opponentNotFound = status;

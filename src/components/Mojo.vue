@@ -71,7 +71,9 @@ export default {
       max-height: 100%
 
     .content
+      height: 100%
       .inner
+        height: 100%
         .user__load
           @include absolutecenter()
 

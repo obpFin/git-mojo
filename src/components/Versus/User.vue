@@ -1,7 +1,15 @@
 <template>
   <div class="user">
-    <img v-bind:src="userImg" alt="user-img" class="user__img">
-    <p class="user__name">{{ userName }}</p>
+    <div class="user__info">
+      <div class="img-wrapper">
+        <img v-bind:src="userImg" alt="user-img" class="user__img">
+        <p class="name">{{ userName }}</p>
+      </div>
+      <p>Score</p>
+
+    </div>
+    <div class="user__score">
+    </div>
   </div>
 </template>
 
@@ -16,19 +24,24 @@ export default {
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
   .user
-    display: inline-block
     margin: auto 0
     @media only screen and (max-width: 420px)
       padding-top: 0
-
-    .user__img
-      width: 120px
-      height: auto
-      border-radius: 100px
-      @media only screen and (max-width: 420px)
-        width: 80px
-
-    .user__name
+    .user__info
+      display: flex
+      .user__img
+        width: 120px
+        height: 120px
+        border-radius: 100px
+        @media only screen and (max-width: 420px)
+          width: 80px
+      p
+        margin-left: 20px
+      .name
+        text-align: center
+    .user__score
+      margin: auto
       text-align: center
+
 
 </style>

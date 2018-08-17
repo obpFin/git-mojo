@@ -1,40 +1,55 @@
 <template>
   <transition name="fade">
     <div class="versus">
-      <User :userImg="user.avatar_url" :userName="user.login"/>
-      <hr class="vertical"/>
-      <button v-if="!showOpponentInput" @click="enableInput" class="btn">Add Opponent</button>
-      <input v-else v-model="opponentName" class="text-area" type="text"/>
-      <p>Work In Progress</p>
-      <button :disabled="!opponentName" @click="addOpponent" class="btn red">GO</button>
+      <div class="versus__user">
+        <User :userImg="user.avatar_url" :userName="user.login"/>
+      </div>
+      <div class="versus__opponents">
+        <div v-if="opponents">
+          <div v-for="o in opponents" :key="o.id">
+            <Opponent :data="o"/>
+          </div>
+        </div>
+      </div>
+      <div class="versus__setting">
+        <div class="input">
+          <input v-model="opponentName" class="text-area center" type="text"/>
+          <button @click="addOpponent" class="btn box small">Add</button>
+          <button id="cta" :disabled="!opponentName" class="btn red">GO</button>
+        </div>
+      </div>
     </div>
   </transition>
 </template>
 
 <script>
 import User from "./User.vue";
+import Opponent from "./Opponent.vue";
+
 export default {
   name: "versus",
   components: {
-    User
+    User,
+    Opponent
   },
   data: function() {
     return {
-      opponentName: "",
-      showOpponentInput: false
+      opponentName: ""
     };
   },
   methods: {
-    enableInput: function() {
-      this.showOpponentInput = true;
-    },
     addOpponent: function() {
       this.$store.dispatch("getOpponent", this.opponentName);
+      this.showOpponentInput = false;
     }
   },
   computed: {
     user() {
       return this.$store.state.user.data;
+    },
+    opponents() {
+      console.log("Opponents: ", this.$store.state.opponent.opponents);
+      return this.$store.state.opponent.opponents;
     }
   }
 };
@@ -44,24 +59,30 @@ export default {
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
   .versus
-    display: flex
+    height: 100%
     margin-left: $sidebar-width
     background: $primary-lighter
-    padding: $base-margin * 2
-    @media only screen and (max-width: 420px)
-      margin-left: $sidebar-width-small
+    padding: 0 $base-margin * 2
+
+    > div
+      height: (100% / 3)
       display: flex
       flex-direction: column
-      align-items: center
-      padding: 40px
-    > button, input
-      margin: auto 0
+      border-bottom: 1px $primary-light solid
 
-    hr
-      height: 50vh
-      margin: 0 80px
-      @media only screen and (max-width: 420px)
-        display: none
-    input
+
+    .versus__user
+      justify-content: center
+      align-items: center
+    .versus__setting
+      justify-content: center
+      .input
+        display: flex
+        input.center
+          margin: auto 0 auto auto
+      #cta
+        margin: auto
+      
+    
 
 </style>

@@ -6,7 +6,8 @@ const state = {
   data: {},
   fetchUser: false,
   userNotFound: false,
-  isWelcomed: false
+  isWelcomed: false,
+  apiLimitExceeded: false
 };
 
 //actions
@@ -42,6 +43,9 @@ const actions = {
           console.log("UserData", state);
         },
         error => {
+          if (error == 403) {
+            commit("apiLimitExceeded");
+          }
           commit("setUserNotFound", true);
           console.log(error);
         }
@@ -73,6 +77,9 @@ const mutations = {
   },
   setUserFavLang(state, favoriteLanguage) {
     state.data = { ...state.data, favoriteLanguage };
+  },
+  apiLimitExceeded(state) {
+    state.apiLimitExceeded = true;
   }
 };
 //getters

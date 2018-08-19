@@ -6,16 +6,19 @@ const fetchUserData = userName => {
     if (typeof userName === "string") {
       fetch(`${ghSourceUrl}/users/${userName}`)
         .then(stream => {
+          if (stream.status == 403) {
+            return reject(403);
+          }
           if (stream.ok) {
             return stream.json();
           } else {
-            throw new Error("User not found");
+            reject("User not found");
           }
         })
         .then(data => {
           resolve(data);
         })
-        .catch(error => reject(() => console.log(error)));
+        .catch(error => reject(error));
     }
   });
 };

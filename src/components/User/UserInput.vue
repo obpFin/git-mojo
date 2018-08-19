@@ -6,7 +6,8 @@
         <img id="gh-logo" v-tooltip.top-center="'Github'" src="../../assets/images/github.png" alt="github-account">
       </span>
     </p>
-    <p class="warning" v-if="userNotFound == true && userName">User not found!</p>
+    <p class="warning" v-show="userNotFound == true && userName && !apiLimitExceeded">User not found!</p>
+    <p class="warning" v-show="apiLimitExceeded">Api limit exceeded</p>
     <div class="user__input">
       <input class="text-area" v-focus v-model="userName" v-on:keyup.enter="onGetUser" placeholder="username">
       <button class="btn" @click="onGetUser" :disabled="!userName">Set</button>
@@ -42,6 +43,9 @@ export default {
   computed: {
     userNotFound() {
       return this.$store.state.user.userNotFound;
+    },
+    apiLimitExceeded() {
+      return this.$store.state.user.apiLimitExceeded;
     }
   },
   watch: {

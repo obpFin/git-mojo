@@ -2,7 +2,7 @@
   <div class="user">
     <div class="user__info">
       <div class="img-wrapper">
-        <img v-bind:src="userImg" alt="user-img" class="user__img">
+        <img v-bind:src="userImg" alt="img" class="user__img">
         <p class="name">{{ userName }}</p>
       </div>
       <p>Score</p>

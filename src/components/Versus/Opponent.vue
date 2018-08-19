@@ -26,14 +26,6 @@ export default {
     notFound() {
       return this.data.notFound;
     }
-  },
-  watch: {
-    data: function(newVal, oldVal) { // watch it
-      console.log('Data', newVal);
-    }
-  },
-  mounted() {
-    console.log('Data', this.data);
   }
 };
 </script>
@@ -50,6 +42,9 @@ export default {
         height: 75px
         border-radius: 100px
         margin: 10px 0
+      p
+        margin: auto 0
+        padding-left: 20px
     .opponent__info--loading
       display: flex
       padding: 20px

@@ -41,7 +41,7 @@ const mutations = {
       state.opponents.push({ loading: true });
     }
   },
-  setOpponentNotFound(state, status) {
+  setOpponentNotFound(state) {
     const index = state.opponents.findIndex(obj => obj.loading);
     if (index > -1) {
       console.log("Index ", index);

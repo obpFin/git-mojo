@@ -121,19 +121,20 @@ ul
     opacity: .9
   &.red:hover
     background: #E01F33
+  &.disabled
+    opacity: 0.5
+
+.btn:hover
+
+.btn.disabled:hover 
+  pointer-events:none
+
+.btn:focus 
+  outline: 0
 
 // inputs
 input[type=text]
   padding-left: 5px
-
-.btn:hover 
-  color: #ffffff !important
-  background: $red-darker
-  //border-color: #102027 !important
-  transition: all 0.4s ease 0s
-
-.btn:focus 
-  outline: 0
 
 .text-area
   width: 200px

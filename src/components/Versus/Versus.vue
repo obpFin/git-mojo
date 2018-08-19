@@ -14,8 +14,8 @@
       <div class="versus__setting">
         <div class="input">
           <input v-model="opponentName" class="text-area center" type="text"/>
-          <button @click="addOpponent" class="btn box small">Add</button>
-          <button id="cta" :disabled="!opponentName" class="btn red">GO</button>
+          <button :disabled="maxOpponents" @click="addOpponent" class="btn box small" :class="{ disabled: maxOpponents}">Add</button>
+          <button id="cta" :disabled="!opponents" class="btn red">GO</button>
         </div>
       </div>
     </div>
@@ -34,7 +34,8 @@ export default {
   },
   data: function() {
     return {
-      opponentName: ""
+      opponentName: "",
+      maxOpponents: false
     };
   },
   methods: {
@@ -50,6 +51,13 @@ export default {
     opponents() {
       console.log("Opponents: ", this.$store.state.opponent.opponents);
       return this.$store.state.opponent.opponents;
+    }
+  },
+  watch: {
+    opponents: function(newVal) {
+      if (newVal.length >= 3) {
+        this.maxOpponents = true;
+      }
     }
   }
 };

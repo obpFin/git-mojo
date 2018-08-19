@@ -1,4 +1,5 @@
 import { fetchUserData, fetchUserContribs } from "../../api/api";
+import { map } from "../../../node_modules/rxjs/operators";
 
 //initial state
 const state = {
@@ -7,7 +8,7 @@ const state = {
 
 //actions
 const actions = {
-  getOpponent({ commit, state }, userName) {
+  getOpponent({ commit }, userName) {
     commit("eraseNotFoundOpponents");
     commit("setFetchOpponent", true);
     const opponentData = fetchUserData(userName);
@@ -25,6 +26,9 @@ const actions = {
         commit("setOpponentNotFound", true);
       }
     );
+  },
+  removeOpponent({ commit }, id) {
+    commit("removeOpponentFromStore", id);
   }
 };
 //mutations
@@ -44,10 +48,14 @@ const mutations = {
   setOpponentNotFound(state) {
     const index = state.opponents.findIndex(obj => obj.loading);
     if (index > -1) {
-      console.log("Index ", index);
       state.opponents[index].loading = false;
       state.opponents[index].notFound = true;
     }
+  },
+  removeOpponentFromStore(state, id) {
+    console.log("remove ", id);
+    state.opponents.map(o => console.log(o.id));
+    state.opponents = state.opponents.filter(opp => opp.id !== id);
   }
 };
 //getters

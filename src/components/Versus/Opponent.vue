@@ -4,7 +4,8 @@
       <Spinner/>
     </div>
     <div v-if="data.login" class="opponent__info">
-      <img v-bind:src="data.avatar_url" alt="opponent-img">
+      <img class="remove" src="../../assets/images/remove.png" alt="remove" @click="removeOpponent">
+      <img class="vs" :src="data.avatar_url" alt="opponent-img">
       <p>{{ data.login }}</p>
     </div>
     <div v-show="data.notFound" class="opponent__info--not-found">
@@ -22,6 +23,11 @@ export default {
   components: {
     Spinner
   },
+  methods: {
+    removeOpponent: function() {
+      this.$store.dispatch("removeOpponent", this.data.id);
+    }
+  },
   computed: {
     notFound() {
       return this.data.notFound;
@@ -37,11 +43,14 @@ export default {
   .opponent
     .opponent__info
       display: flex
-      img
+      img.vs
         width: 75px
         height: 75px
         border-radius: 100px
         margin: 10px 0
+      img.remove
+        height: 10px
+        width: 10px
       p
         margin: auto 0
         padding-left: 20px

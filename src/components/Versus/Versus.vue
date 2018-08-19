@@ -57,6 +57,8 @@ export default {
     opponents: function(newVal) {
       if (newVal.length >= 3) {
         this.maxOpponents = true;
+      } else {
+        this.maxOpponents = false;
       }
     }
   }

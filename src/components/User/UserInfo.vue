@@ -48,6 +48,9 @@
           <p class="light" v-if="user.favoriteLanguage">
             Your favorite language is <span class="highlight">{{ user.favoriteLanguage }}</span> 
           </p>
+          <p class="light" v-if="user.score">
+            Your Mojo Score is <span class="highlight">{{ user.score }}</span> 
+          </p>
         </div>
       </div>
       <div class="commits">
@@ -65,7 +68,7 @@
 
 <script>
 export default {
-  name: "user-info",
+  name: 'user-info',
   data() {
     return {
       showInfo: false
@@ -105,7 +108,7 @@ export default {
       //else show welcome text for 3 secs
       setTimeout(() => {
         if (!this.isWelcomed) {
-          this.$store.dispatch("welcomeUser", true);
+          this.$store.dispatch('welcomeUser', true);
         }
         this.showInfo = true;
       }, 2000);

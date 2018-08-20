@@ -39,6 +39,7 @@ export default {
         margin-left: 20px
       .name
         text-align: center
+        text-transform: uppercase
     .user__score
       margin: auto
       text-align: center

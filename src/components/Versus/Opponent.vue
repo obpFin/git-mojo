@@ -60,6 +60,9 @@ export default {
       p
         margin: auto 0
         padding-left: 20px
+        text-transform: uppercase
+        letter-spacing: 2.5px
+
     .opponent__info--loading
       display: flex
       padding: 20px

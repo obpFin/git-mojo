@@ -34,6 +34,7 @@ export default {
   },
   data: function() {
     return {
+      opponentName: '',
       maxOpponents: false
     };
   },

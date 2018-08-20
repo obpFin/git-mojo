@@ -1,5 +1,6 @@
 import { fetchUserData, fetchUserContribs, fetchData } from "../../api/api";
 import { getFavoriteLang } from "../../utils/utils";
+import mojoScore from "../../utils/mojoScore";
 
 //initial state
 const state = {
@@ -61,7 +62,7 @@ const actions = {
 //mutations
 const mutations = {
   setUser(state, user) {
-    state.data = { ...user };
+    state.data = { ...user, score: mojoScore(user) };
   },
   setUserOrgs(state, orgs) {
     state.data = { ...state.data, orgs };

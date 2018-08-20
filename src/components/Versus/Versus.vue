@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="versus">
       <div class="versus__user">
-        <User :userImg="user.avatar_url" :userName="user.login"/>
+        <User :data="user"/>
       </div>
       <div class="versus__opponents">
         <div v-if="opponents">
@@ -34,7 +34,6 @@ export default {
   },
   data: function() {
     return {
-      opponentName: '',
       maxOpponents: false
     };
   },

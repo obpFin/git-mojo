@@ -15,22 +15,28 @@
 </template>
 
 <script>
-import Spinner from "vue-simple-spinner";
+import Spinner from 'vue-simple-spinner';
+import mojoScore from '../../utils/mojoScore';
 
 export default {
-  name: "versus-opponent",
-  props: ["data"],
+  name: 'versus-opponent',
+  props: ['data'],
   components: {
     Spinner
   },
   methods: {
     removeOpponent: function() {
-      this.$store.dispatch("removeOpponent", this.data.id);
+      this.$store.dispatch('removeOpponent', this.data.id);
     }
   },
   computed: {
     notFound() {
       return this.data.notFound;
+    }
+  },
+  created: function() {
+    if (this.data.contributions) {
+      console.log('Score: ', mojoScore(this.data));
     }
   }
 };

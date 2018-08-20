@@ -108,7 +108,7 @@ export default {
           this.$store.dispatch("welcomeUser", true);
         }
         this.showInfo = true;
-      }, 3000);
+      }, 2000);
     }
   }
 };

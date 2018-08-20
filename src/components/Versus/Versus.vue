@@ -13,7 +13,7 @@
       </div>
       <div class="versus__setting">
         <div class="input">
-          <input v-model="opponentName" class="text-area center" type="text"/>
+          <input v-model="opponentName" v-on:keyup.enter="addOpponent" class="text-area center" type="text"/>
           <button :disabled="maxOpponents" @click="addOpponent" class="btn box small" :class="{ disabled: maxOpponents}">Add</button>
           <button id="cta" :disabled="!opponents" class="btn red">GO</button>
         </div>
@@ -23,24 +23,24 @@
 </template>
 
 <script>
-import User from "./User.vue";
-import Opponent from "./Opponent.vue";
+import User from './User.vue';
+import Opponent from './Opponent.vue';
 
 export default {
-  name: "versus",
+  name: 'versus',
   components: {
     User,
     Opponent
   },
   data: function() {
     return {
-      opponentName: "",
+      opponentName: '',
       maxOpponents: false
     };
   },
   methods: {
     addOpponent: function() {
-      this.$store.dispatch("getOpponent", this.opponentName);
+      this.$store.dispatch('getOpponent', this.opponentName);
       this.showOpponentInput = false;
     }
   },
@@ -49,7 +49,7 @@ export default {
       return this.$store.state.user.data;
     },
     opponents() {
-      console.log("Opponents: ", this.$store.state.opponent.opponents);
+      console.log('Opponents: ', this.$store.state.opponent.opponents);
       return this.$store.state.opponent.opponents;
     }
   },
@@ -84,7 +84,12 @@ export default {
     .versus__user
       justify-content: center
       align-items: center
+      height: 30%
+    .versus__opponents
+      height: 40%
+      justify-content: center
     .versus__setting
+      height: 30%
       justify-content: center
       .input
         display: flex

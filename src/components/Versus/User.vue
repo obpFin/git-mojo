@@ -1,12 +1,15 @@
 <template>
   <div class="user">
     <div class="user__info">
-      <div class="img-wrapper">
-        <img v-bind:src="data.avatar_url" alt="img" class="user__img">
-        <p class="name">{{ data.login }}</p>
+      <div class="name">
+        <p class="name__text">{{ data.login }}</p>
       </div>
-      <p>Score</p>
-
+      <div class="img">
+        <img v-bind:src="data.avatar_url" alt="img" class="user__img">
+      </div>
+      <div class="score">
+        <p class="highlight">{{ this.data.score }}</p>
+      </div>
     </div>
     <div class="user__score">
     </div>
@@ -35,11 +38,16 @@ export default {
         border-radius: 100px
         @media only screen and (max-width: 420px)
           width: 80px
+      .name, .score
+        margin: auto
       p
+        margin: 0
         margin-left: 20px
+        text-align: center
       .name
         text-align: center
         text-transform: uppercase
+        margin-right: 20px
     .user__score
       margin: auto
       text-align: center

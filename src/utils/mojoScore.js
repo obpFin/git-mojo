@@ -1,6 +1,10 @@
 export default userData => {
-  const { contributions, followers, publicRepos, years } = userData;
-
+  const {
+    contributions = 0,
+    followers = 0,
+    publicRepos = 0,
+    years = 0
+  } = userData;
   return (
     contributions.length +
     followers * 30 +

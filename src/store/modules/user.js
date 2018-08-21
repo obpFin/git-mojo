@@ -1,8 +1,8 @@
-import { fetchUserData, fetchUserContribs, fetchData } from "../../api/api";
-import { getFavoriteLang } from "../../utils/utils";
-import mojoScore from "../../utils/mojoScore";
+import { fetchUserData, fetchUserContribs, fetchData } from '../../api/api';
+import { getFavoriteLang } from '../../utils/utils';
+import mojoScore from '../../utils/mojoScore';
 
-//initial state
+// initial state
 const state = {
   data: {},
   fetchUser: false,
@@ -11,55 +11,55 @@ const state = {
   apiLimitExceeded: false
 };
 
-//actions
+// actions
 const actions = {
   getUser({ commit, state }, userName) {
-    commit("setFetchUser", true);
+    commit('setFetchUser', true);
     if (!userName) {
-      commit("setFetchUser", false);
-      commit("setUserNotFound", true);
+      commit('setFetchUser', false);
+      commit('setUserNotFound', true);
     } else if (userName && state.userNotFound) {
-      commit("setUserNotFound", false);
+      commit('setUserNotFound', false);
     }
     const userData = fetchUserData(userName);
     const userContribs = fetchUserContribs(userName);
     Promise.all([userData, userContribs])
       .then(
         data => {
-          commit("setUser", {
+          commit('setUser', {
             ...data[0],
             ...data[1]
           });
           if (data[0].organizations_url) {
             fetchData(data[0].organizations_url).then(orgs => {
-              commit("setUserOrgs", orgs);
+              commit('setUserOrgs', orgs);
             });
           }
           if (data[0].public_repos) {
             fetchData(data[0].repos_url).then(repos => {
               const favLang = getFavoriteLang(repos);
-              commit("setUserFavLang", favLang);
+              commit('setUserFavLang', favLang);
             });
           }
-          console.log("UserData", state);
+          console.log('UserData', state);
         },
         error => {
-          if (error == 403) {
-            commit("apiLimitExceeded");
+          if (error === 403) {
+            commit('apiLimitExceeded');
           }
-          commit("setUserNotFound", true);
+          commit('setUserNotFound', true);
           console.log(error);
         }
       )
       .finally(() => {
-        commit("setFetchUser", false);
+        commit('setFetchUser', false);
       });
   },
   welcomeUser({ commit }, status) {
-    commit("setUserWelcomed", status);
+    commit('setUserWelcomed', status);
   }
 };
-//mutations
+// mutations
 const mutations = {
   setUser(state, user) {
     state.data = { ...user, score: mojoScore(user) };
@@ -83,7 +83,7 @@ const mutations = {
     state.apiLimitExceeded = true;
   }
 };
-//getters
+// getters
 const getters = {
   isLoggedIn(state) {
     return state.data.login != null;

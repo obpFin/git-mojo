@@ -46,10 +46,10 @@
             You have <span class="highlight">{{ user.public_repos }}</span> public repositories
           </p>
           <p class="light" v-if="user.favoriteLanguage">
-            Your favorite language is <span class="highlight">{{ user.favoriteLanguage }}</span> 
+            Your favorite language is <span class="highlight">{{ user.favoriteLanguage }}</span>
           </p>
           <p class="light" v-if="user.score">
-            Your Mojo Score is <span class="highlight">{{ user.score }}</span> 
+            Your Mojo Score is <span class="highlight">{{ user.score }}</span>
           </p>
         </div>
       </div>
@@ -57,7 +57,7 @@
         <h2>Public contribution history</h2>
         <ul>
           <li v-for="year in years" :key="year.year">
-            {{ year.year }} <span>{{ year.total }}</span> 
+            {{ year.year }} <span>{{ year.total }}</span>
           </li>
         </ul>
       </div>
@@ -101,11 +101,11 @@ export default {
   },
   mounted: function() {
     if (this.user.name || this.user.login) {
-      //show info immediately after initial login
+      // show info immediately after initial login
       if (this.isWelcomed) {
         this.showInfo = true;
       }
-      //else show welcome text for 3 secs
+      // else show welcome text for 3 secs
       setTimeout(() => {
         if (!this.isWelcomed) {
           this.$store.dispatch('welcomeUser', true);
@@ -120,7 +120,7 @@ export default {
 <style scoped lang="sass">
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
-  
+
   .welcome-text
     @include absolutecenter()
   .user-info
@@ -162,14 +162,13 @@ export default {
           margin-left: 40px
           @media only screen and (max-width: 420px)
             margin-left: 20px
-            
     .history
       padding: $base-margin 0
       display: flex
       border-bottom: 1px $primary-light solid
       @media only screen and (max-width: 420px)
         flex-direction: column
-      .history__image 
+      .history__image
         display: inline-block
         padding: 40px
         @media only screen and (max-width: 420px)
@@ -209,7 +208,7 @@ export default {
         padding: 40px
       ul
         padding-left: 40px
-        > li 
+        > li
           display: inline-block
           zoom: 1
           padding: 0 20px
@@ -225,8 +224,4 @@ export default {
               transform: none
               padding-bottom: 10px
               width: 20px
-
-
-
-
 </style>

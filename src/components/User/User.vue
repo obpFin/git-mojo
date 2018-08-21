@@ -7,17 +7,17 @@
       <div v-else class="user__name" key="input">
         <UserInput/>
       </div>
-    </transition>  
+    </transition>
   </div>
 </template>
 
 <script>
-import Spinner from "vue-simple-spinner";
-import UserInput from "./UserInput.vue";
-import UserInfo from "./UserInfo.vue";
+import Spinner from 'vue-simple-spinner';
+import UserInput from './UserInput.vue';
+import UserInfo from './UserInfo.vue';
 
 export default {
-  name: "user",
+  name: 'user',
   props: [],
   components: {
     UserInput,
@@ -48,8 +48,4 @@ export default {
         left: 40%
       @media only screen and (max-width: 420px)
         transform: translate(-40%, -50%)
-        
-
-
-
 </style>

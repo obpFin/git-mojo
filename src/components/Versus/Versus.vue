@@ -79,8 +79,6 @@ export default {
       display: flex
       flex-direction: column
       border-bottom: 1px $primary-light solid
-
-
     .versus__user
       justify-content: center
       align-items: center
@@ -97,7 +95,4 @@ export default {
           margin: auto 0 auto auto
       #cta
         margin: auto
-      
-    
-
 </style>

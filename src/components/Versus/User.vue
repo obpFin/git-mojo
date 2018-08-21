@@ -43,6 +43,4 @@ export default {
     .user__score
       margin: auto
       text-align: center
-
-
 </style>

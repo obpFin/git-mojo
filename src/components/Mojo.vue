@@ -17,15 +17,15 @@
 </template>
 
 <script>
-import Sidebar from "./Sidebar/Sidebar.vue";
-import User from "./User/User.vue";
-import UserInput from "./User/UserInput.vue";
-import Spinner from "vue-simple-spinner";
+import Sidebar from './Sidebar/Sidebar.vue';
+import User from './User/User.vue';
+import UserInput from './User/UserInput.vue';
+import Spinner from 'vue-simple-spinner';
 
 export default {
-  name: "Mojo",
+  name: 'Mojo',
   created() {
-    document.title = "Mojo";
+    document.title = 'Mojo';
   },
   components: {
     Sidebar,
@@ -54,8 +54,8 @@ export default {
 
   .wrapper
     @include absolutecenter()
-    width: 1280px
     height: 90vh
+    width: 100%
     background: $primary-lighter
     max-width: $app-max-width
     max-height: $app-max-height

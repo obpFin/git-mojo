@@ -17,11 +17,11 @@
 
 <script>
 export default {
-  name: "test",
+  name: 'test',
   data() {
     return {};
   },
-  props: ["isLoggedIn"]
+  props: ['isLoggedIn']
 };
 </script>
 
@@ -30,15 +30,14 @@ export default {
 
   .sidebar
     height: 90vh
-    position: absolute
+    position: fixed
     width: $sidebar-width
-    max-height: $app-max-height
     background: $primary-light
     display: flex
     flex-direction: column
     @media only screen and (max-width: 420px)
       width: $sidebar-width-small
-      height: 100vh
+      height: 100%
     #mojo
       padding-top: 10px
       img
@@ -60,7 +59,4 @@ export default {
           @media only screen and (max-width: 420px)
             width: $sidebar-width-small / 1.75
             height: $sidebar-width-small / 1.75
-
-
-
 </style>

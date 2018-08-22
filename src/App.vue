@@ -5,15 +5,17 @@
 </template>
 
 <script>
-import Mojo from "./components/Mojo.vue";
+import Mojo from './components/Mojo.vue';
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     Mojo
   }
 };
 </script>
 
-<style>
+<style lang="sass">
+.app
+  width: 100%
 </style>

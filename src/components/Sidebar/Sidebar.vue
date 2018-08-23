@@ -36,6 +36,10 @@ export default {
     display: flex
     flex-direction: column
     @media only screen and (max-width: 420px)
+      position: relative
+      display: none
+      transform: translateX(-100%)
+      transition: transform 0.6s ease
       width: $sidebar-width-small
       height: 100%
     #mojo

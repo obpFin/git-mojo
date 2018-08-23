@@ -1,7 +1,7 @@
 <template>
   <div v-if="InputPending" class="container">
     <h1>Welcome</h1>
-    <p>Please input your 
+    <p>Please input your
       <span>
         <img id="gh-logo" v-tooltip.top-center="'Github'" src="../../assets/images/github.png" alt="github-account">
       </span>
@@ -16,15 +16,15 @@
 </template>
 
 <script>
-import Vue from "vue";
-import VTooltip from "v-tooltip";
+import Vue from 'vue';
+import VTooltip from 'v-tooltip';
 Vue.use(VTooltip);
 
 export default {
-  name: "user-input",
+  name: 'user-input',
   data: function() {
     return {
-      userName: "",
+      userName: '',
       InputPending: true
     };
   },
@@ -36,7 +36,7 @@ export default {
     onGetUser() {
       if (this.userName) {
         this.InputPending = false;
-        this.$store.dispatch("getUser", this.userName);
+        this.$store.dispatch('getUser', this.userName);
       }
     }
   },

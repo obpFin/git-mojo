@@ -8,7 +8,8 @@ const state = {
   fetchUser: false,
   userNotFound: false,
   isWelcomed: false,
-  apiLimitExceeded: false
+  apiLimitExceeded: false,
+  sidebar: false
 };
 
 // actions
@@ -57,6 +58,9 @@ const actions = {
   },
   welcomeUser({ commit }, status) {
     commit('setUserWelcomed', status);
+  },
+  toggleNav({ commit }) {
+    commit('setNav');
   }
 };
 // mutations
@@ -81,6 +85,9 @@ const mutations = {
   },
   apiLimitExceeded(state) {
     state.apiLimitExceeded = true;
+  },
+  setNav() {
+    state.sidebar = !state.sidebar;
   }
 };
 // getters

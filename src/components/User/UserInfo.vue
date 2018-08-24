@@ -4,8 +4,12 @@
       <h1 class="welcome-text" v-if="!isWelcomed">Welcome {{ user.name || user.login }}</h1>
     </transition>
     <transition name="fade">
-    <div v-if="showInfo" class="user-info">
+    <div v-if="showInfo" class="user-info" v-bind:class="{ active: this.active }">
       <div class="top">
+        <div class="top__item" @click="toggleNav" style="margin-left: 10px">
+          <img class="hamburger" src="../../assets/images/hamburger.svg" alt="hamburger">
+          <hr class="vertical"/>
+        </div>
         <div class="top__item">
           <p>{{ user.login }}</p>
           <hr class="vertical"/>
@@ -71,7 +75,8 @@ export default {
   name: 'user-info',
   data() {
     return {
-      showInfo: false
+      showInfo: false,
+      isActive: false
     };
   },
   props: [],
@@ -80,6 +85,9 @@ export default {
       if (this.user.blog) {
         return this.user.blog.length <= maxChars;
       }
+    },
+    toggleNav() {
+      this.$store.dispatch('toggleNav');
     }
   },
   computed: {
@@ -97,6 +105,9 @@ export default {
     },
     orgs() {
       return this.$store.state.user.data.orgs;
+    },
+    active() {
+      return this.$store.state.user.sidebar;
     }
   },
   mounted: function() {
@@ -124,9 +135,12 @@ export default {
   .welcome-text
     @include absolutecenter()
   .user-info
-    margin-left: $sidebar-width
-    @media only screen and (max-width: 420px)
-      margin-left: $sidebar-width-small
+    transform: translateX(0)
+    transition: transform .6s ease
+    @media only screen and (min-width: 420px)
+      margin-left: $sidebar-width
+    &.active
+      transform: translateX($sidebar-width-small)
     .top
       display: flex
       align-items: center
@@ -154,6 +168,11 @@ export default {
           @media only screen and (max-width: 420px)
             margin: 0
             width: 20px
+        .hamburger
+          width: 35px
+          @media only screen and (min-width: 420px)
+            display: none
+
         p
           @media only screen and (max-width: 420px)
             width: min-content

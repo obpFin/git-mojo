@@ -1,5 +1,5 @@
 <template>
-  <nav class="sidebar">
+  <nav class="sidebar" v-bind:class="{ active: this.active }">
     <router-link to="/" id="mojo">
       <a><img src="../../assets/images/mojo.png" alt="mojo"></a>
     </router-link>
@@ -21,7 +21,12 @@ export default {
   data() {
     return {};
   },
-  props: ['isLoggedIn']
+  props: ['isLoggedIn'],
+  computed: {
+    active() {
+      return this.$store.state.user.sidebar;
+    }
+  }
 };
 </script>
 
@@ -35,11 +40,13 @@ export default {
     background: $primary-light
     display: flex
     flex-direction: column
+    transform: translateX(-100%)
+    transition: transform 0.6s ease
+    @media only screen and (min-width: 420px)
+      transform: translateX(0)
+    &.active
+      transform: translateX(0)
     @media only screen and (max-width: 420px)
-      position: relative
-      display: none
-      transform: translateX(-100%)
-      transition: transform 0.6s ease
       width: $sidebar-width-small
       height: 100%
     #mojo

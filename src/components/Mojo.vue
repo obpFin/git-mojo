@@ -2,6 +2,7 @@
 <div class="wrapper">
   <div class="content">
     <div class="inner">
+
       <Sidebar :isLoggedIn="isLoggedIn"/>
       <router-view>
         <User key="user"/>

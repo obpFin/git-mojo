@@ -134,6 +134,7 @@ export default {
 
   .welcome-text
     @include absolutecenter()
+    text-transform: uppercase
   .user-info
     transform: translateX(0)
     transition: transform .6s ease

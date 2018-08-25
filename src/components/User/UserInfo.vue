@@ -49,7 +49,7 @@
           <p class="light" v-else>
             You have <span class="highlight">{{ user.public_repos }}</span> public repositories
           </p>
-          <p class="light" v-if="user.favoriteLanguage">
+          <p class="light" v-if="user.favoriteLanguage && user.favoriteLanguage != 'null'">
             Your favorite language is <span class="highlight">{{ user.favoriteLanguage }}</span>
           </p>
           <p class="light" v-if="user.score">

@@ -34,7 +34,6 @@ export default {
       display: flex
       .user__img
         width: 120px
-        height: 120px
         border-radius: 100px
         @media only screen and (max-width: 420px)
           width: 80px

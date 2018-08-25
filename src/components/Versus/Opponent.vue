@@ -16,7 +16,14 @@
 
 <script>
 import Spinner from 'vue-simple-spinner';
-import mojoScore from '../../utils/mojoScore';
+import { mojoScore, opponentLevel } from '../../utils/mojoScore';
+
+const LEVELS = {
+  easy: 'easy',
+  medium: 'medium',
+  hard: 'hard'
+
+}
 
 export default {
   name: 'versus-opponent',
@@ -34,10 +41,18 @@ export default {
       return this.data.notFound;
     }
   },
-  created: function() {
+  created() {
     if (this.data.contributions) {
-      console.log('Score: ', mojoScore(this.data));
+      console.log('opponentScore: ', this.score);
+      console.log('userScore: ', this.userScore);
+      console.log('dff: ', opponentLevel(this.score));
     }
+  },
+  score() {
+    return mojoScore(this.data);
+  },
+  userScore() {
+    return this.$store.state.user.data.score;
   }
 };
 </script>

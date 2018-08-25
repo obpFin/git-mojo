@@ -1,37 +1,36 @@
-import { fetchUserData, fetchUserContribs } from "../../api/api";
-import { map } from "../../../node_modules/rxjs/operators";
+import { fetchUserData, fetchUserContribs } from '../../api/api';
 
-//initial state
+// initial state
 const state = {
   opponents: []
 };
 
-//actions
+// actions
 const actions = {
   getOpponent({ commit }, userName) {
-    commit("eraseNotFoundOpponents");
-    commit("setFetchOpponent", true);
+    commit('eraseNotFoundOpponents');
+    commit('setFetchOpponent', true);
     const opponentData = fetchUserData(userName);
     const opponentContribs = fetchUserContribs(userName);
     Promise.all([opponentData, opponentContribs]).then(
       data => {
-        commit("setOpponent", {
+        commit('setOpponent', {
           ...data[0],
           ...data[1]
         });
-        console.log("OpponentData", state);
+        console.log('OpponentData', state);
       },
       error => {
         console.log(error);
-        commit("setOpponentNotFound", true);
+        commit('setOpponentNotFound', true);
       }
     );
   },
   removeOpponent({ commit }, id) {
-    commit("removeOpponentFromStore", id);
+    commit('removeOpponentFromStore', id);
   }
 };
-//mutations
+// mutations
 const mutations = {
   setOpponent(state, opponent) {
     state.opponents = readyOpponents(state);
@@ -53,15 +52,14 @@ const mutations = {
     }
   },
   removeOpponentFromStore(state, id) {
-    console.log("remove ", id);
     state.opponents.map(o => console.log(o.id));
     state.opponents = state.opponents.filter(opp => opp.id !== id);
   }
 };
-//getters
+// getters
 const getters = {};
 
-//helpers
+// helpers
 const readyOpponents = state =>
   state.opponents.filter(opp => !opp.notFound && !opp.loading);
 

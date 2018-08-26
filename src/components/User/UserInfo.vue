@@ -116,13 +116,13 @@ export default {
       if (this.isWelcomed) {
         this.showInfo = true;
       }
-      // else show welcome text for 3 secs
+      // else show welcome text for 2 secs
       setTimeout(() => {
         if (!this.isWelcomed) {
           this.$store.dispatch('welcomeUser', true);
         }
         this.showInfo = true;
-      }, 2000);
+      }, 1500);
     }
   }
 };

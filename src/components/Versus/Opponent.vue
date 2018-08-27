@@ -19,12 +19,6 @@ import Spinner from 'vue-simple-spinner';
 import mojoScore from '../../utils/mojoScore';
 import { opponentLevel } from '../../utils/utils';
 
-const LEVELCODES = {
-  easy: '#c6df5f',
-  medium: '#ffd000',
-  hard: '#fe0229'
-}
-
 export default {
   name: 'versus-opponent',
   props: ['data'],

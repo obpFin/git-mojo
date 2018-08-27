@@ -31,14 +31,13 @@ const opponentLevel = (userScore, opponentScore) => {
   console.log('userScore:', userScore, 'opponentScore: ', opponentScore)
   const diff = (opponentScore - userScore) / userScore;
   console.log('diff: ', diff)
-  switch (diff) {
-    case (diff < 0):
-      return LEVELS.EASY
-    case (diff > 2):
-      return LEVELS.HARD
-    default:
-      return LEVELS.MEDIUM
+  if (diff < 0) {
+    return LEVELS.EASY
   }
+  if (diff > 2) {
+    return LEVELS.HARD
+  }
+  return LEVELS.MEDIUM
 }
 
 export {getFavoriteLang, opponentLevel};

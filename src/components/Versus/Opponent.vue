@@ -5,7 +5,7 @@
     </div>
     <div v-if="data.login" class="opponent__info">
       <img class="remove" src="../../assets/images/remove.png" alt="remove" @click="removeOpponent">
-      <img class="vs" :src="data.avatar_url" alt="opponent-img">
+      <img class="vs" :src="data.avatar_url" alt="opponent-img" :class="this.opponentLevel">
       <p>{{ data.login }}</p>
     </div>
     <div v-show="data.notFound" class="opponent__info--not-found">
@@ -18,6 +18,12 @@
 import Spinner from 'vue-simple-spinner';
 import mojoScore from '../../utils/mojoScore';
 import { opponentLevel } from '../../utils/utils';
+
+const LEVELCODES = {
+  easy: '#c6df5f',
+  medium: '#ffd000',
+  hard: '#fe0229'
+}
 
 export default {
   name: 'versus-opponent',
@@ -40,6 +46,9 @@ export default {
     userScore() {
       console.log('ASD', this.$store.state.user.data.score)
       return this.$store.state.user.data.score;
+    },
+    opponentLevel() {
+      return opponentLevel(this.userScore, this.score)
     }
   },
   created() {
@@ -56,6 +65,10 @@ export default {
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
 
+  $easy: #c6df5f
+  $medium: #ffd000
+  $hard: #fe0229
+
   .opponent
     .opponent__info
       display: flex
@@ -64,6 +77,12 @@ export default {
         height: 75px
         border-radius: 100px
         margin: 10px 0
+        &.easy
+          border: solid $easy 5px
+        &.medium
+          border: solid $medium 5px
+        &.hard
+          border: solid $hard 5px
       img.remove
         height: 10px
         width: 10px

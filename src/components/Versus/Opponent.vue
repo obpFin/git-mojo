@@ -48,8 +48,7 @@ export default {
       console.log('userScore: ', this.userScore);
       console.log('dff: ', opponentLevel(this.userScore, this.score));
     }
-  },
-
+  }
 };
 </script>
 

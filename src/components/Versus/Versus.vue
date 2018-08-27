@@ -14,7 +14,7 @@
       <div class="versus__setting">
         <div class="input">
           <div class="input__add">
-            <input v-model="opponentName" v-on:keyup.enter="addOpponent" class="text-area center" type="text"/>
+            <input :disabled="maxOpponents" :class="{ disabled: maxOpponents}" v-model="opponentName" v-on:keyup.enter="addOpponent" class="text-area center" type="text" placeholder="username"/>
             <button :disabled="maxOpponents" @click="addOpponent" class="btn box small" :class="{ disabled: maxOpponents}">Add</button>
           </div>
           <button id="cta" :disabled="!opponents" class="btn red">GO</button>
@@ -43,7 +43,7 @@ export default {
   methods: {
     addOpponent: function() {
       this.$store.dispatch('getOpponent', this.opponentName);
-      this.showOpponentInput = false;
+      this.opponentName = ''
     }
   },
   computed: {

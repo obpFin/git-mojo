@@ -2,7 +2,7 @@
   <transition name="fade">
   <div class="info">
     <hr class="horizontal">
-    <h1>Git Mojo</h1>
+    <h1>GH Mojo</h1>
     <hr class="horizontal">
     <ul>
       <li class="text">By <a href="https://github.com/obpFin" target="_blank">Oskari Peltonen </a>2018</li>

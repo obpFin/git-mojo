@@ -42,6 +42,7 @@ export default {
     flex-direction: column
     transform: translateX(-100%)
     transition: transform 0.6s ease
+    z-index: 9999
     @media only screen and (min-width: 420px)
       transform: translateX(0)
     &.active
@@ -63,11 +64,11 @@ export default {
         width: $sidebar-width / 2.5
         height: $sidebar-width / 2.5
         @media only screen and (max-width: 420px)
-          width: $sidebar-width-small / 2.5
-          height: $sidebar-width-small / 2.5
+          width: $sidebar-width-small / 2.0
+          height: $sidebar-width-small / 2.0
         &.vs
           width: $sidebar-width / 1.5
           @media only screen and (max-width: 420px)
-            width: $sidebar-width-small / 1.75
-            height: $sidebar-width-small / 1.75
+            width: $sidebar-width-small / 1.4
+            height: $sidebar-width-small / 1.4
 </style>

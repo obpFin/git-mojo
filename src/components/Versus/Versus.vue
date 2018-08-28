@@ -109,6 +109,7 @@ export default {
           flex-direction: column
           .input__add > *
             display: inline
+            border-radius: 0
           div.input__add
             width: 200px
             margin: 0 auto
@@ -123,5 +124,7 @@ export default {
         input.center
           margin: auto 0 auto auto
       #cta
-        margin: auto
+        margin: 0 80px
+        @media only screen and (max-width: 420px)
+         margin: auto
 </style>

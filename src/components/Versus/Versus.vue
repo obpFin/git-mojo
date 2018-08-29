@@ -17,7 +17,7 @@
             <input :disabled="maxOpponents" :class="{ disabled: maxOpponents}" v-model="opponentName" v-on:keyup.enter="addOpponent" class="text-area center" type="text" placeholder="username"/>
             <button :disabled="maxOpponents" @click="addOpponent" class="btn box small" :class="{ disabled: maxOpponents}">Add</button>
           </div>
-          <button id="cta" :disabled="!opponents" class="btn red">GO</button>
+          <button id="cta" @click="onVersusStart" :disabled="!opponents" class="btn red">GO</button>
         </div>
       </div>
     </div>
@@ -34,16 +34,19 @@ export default {
     User,
     Opponent
   },
-  data: function() {
+  data() {
     return {
       opponentName: '',
       maxOpponents: false
     };
   },
   methods: {
-    addOpponent: function() {
+    addOpponent() {
       this.$store.dispatch('getOpponent', this.opponentName);
       this.opponentName = ''
+    },
+    onVersusStart() {
+      this.$router.push({name: 'results', params: {user: this.user, opponents: this.opponents}});
     }
   },
   computed: {

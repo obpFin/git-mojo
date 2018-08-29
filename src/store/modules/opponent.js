@@ -1,4 +1,5 @@
 import { fetchUserData, fetchUserContribs } from '../../api/api';
+import mojoScore from '../../utils/mojoScore';
 
 // initial state
 const state = {
@@ -14,10 +15,12 @@ const actions = {
     const opponentContribs = fetchUserContribs(userName);
     Promise.all([opponentData, opponentContribs]).then(
       data => {
-        commit('setOpponent', {
+        let opponent = {
           ...data[0],
           ...data[1]
-        });
+        }
+        opponent.score = mojoScore(opponent)
+        commit('setOpponent', opponent);
         console.log('OpponentData', state);
       },
       error => {

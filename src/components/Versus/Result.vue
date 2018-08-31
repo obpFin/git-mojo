@@ -1,11 +1,13 @@
 <template>
+  <transition name="fade">
   <div class="result">
-    <div v-for="(r, index) in results" :key="r.id" class="">
+    <div v-for="(r, index) in results" :key="r.id" :class="`place${index+1}`">
       <i>{{ index + 1 }}</i>
       <img :src="r.img" alt="img">
       <p>{{ r.name }}</p>
     </div>
   </div>
+  </transition>
 </template>
 
 <script>
@@ -60,10 +62,26 @@ export default {
       padding: 0 20px
     > div
       display: flex
-      i
-        font-size: 60px
-        color: #FFD700
-        margin: 10px
+      &.place1
+        i
+          font-size: 65px
+          color: #FFD700
+          margin: 10px
+      &.place2
+        i
+          font-size: 45px
+          color: #C0C0C0
+          margin: 10px
+      &.place3
+        i
+          font-size: 30px
+          color: #cd7f32
+          margin: 10px
+      &.place4
+        i
+          font-size: 20px
+          color: #ffffff
+          margin: 10px
       img
         width: 100px
         height: 100px
@@ -71,6 +89,8 @@ export default {
         margin: 40px 0
       p
         margin: auto 20px
+
+
 
 
 </style>

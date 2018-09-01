@@ -219,10 +219,7 @@ export default {
         @media only screen and (max-width: 420px)
           margin-left: 20px
         p > span
-          color: $primary-red
-          font-weight: bold
-          font-size: $text-lg
-          text-shadow: 1px 0 2px black
+          @include highlight()
     .commits
       h2
         padding: 40px

@@ -66,6 +66,8 @@ export default {
   .opponent
     .opponent__info
       display: flex
+      margin-left: 40px
+
       img.vs
         width: 75px
         height: 75px

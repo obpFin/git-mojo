@@ -99,7 +99,11 @@ export default {
       justify-content: center
       @media only screen and (max-width: 420px)
         height: 50%
-
+      > div
+        display: flex
+        justify-content: center
+        @media only screen and (max-width: 420px)
+          flex-direction: column
     .versus__setting
       height: 30%
       justify-content: center

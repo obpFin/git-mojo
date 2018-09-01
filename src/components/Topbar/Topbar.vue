@@ -45,6 +45,9 @@ export default {
     },
     isWelcomed() {
       return this.$store.state.user.isWelcomed;
+    },
+    orgs() {
+      return this.$store.state.user.data.orgs;
     }
   },
   methods: {
@@ -55,9 +58,6 @@ export default {
       if (this.user.blog) {
         return this.user.blog.length <= maxChars;
       }
-    },
-    orgs() {
-      return this.$store.state.user.data.orgs;
     }
   }
 }
@@ -68,6 +68,7 @@ export default {
   @import "../../assets/sass/mixins/mixins"
 
   .top-bar
+    background: $primary-light
     transform: translateX(0)
     transition: transform .6s ease
     @media only screen and (min-width: 420px)
@@ -77,9 +78,8 @@ export default {
     .top
       display: flex
       align-items: center
-      border-bottom: 1px $primary-light solid
       width: 100%
-      height: 80px
+      height: 70px
       .top__item
         display: flex
         align-items: center
@@ -107,6 +107,7 @@ export default {
             display: none
 
         p
+          color: white
           @media only screen and (max-width: 420px)
             width: min-content
             font-size: 10px

@@ -1,6 +1,6 @@
 # git-mojo
 
-How's your github mojo?
+How's your github mojo? Test it against your friends!
 
 https://www.ghmojo.com
 

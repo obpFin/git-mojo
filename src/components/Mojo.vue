@@ -2,8 +2,8 @@
 <div class="wrapper">
   <div class="content">
     <div class="inner">
-
-      <Sidebar :isLoggedIn="isLoggedIn"/>
+      <TopBar v-if="isLoggedIn"/>
+      <Sidebar v-if="isLoggedIn"/>
       <router-view>
         <User key="user"/>
       </router-view>
@@ -19,6 +19,7 @@
 
 <script>
 import Sidebar from './Sidebar/Sidebar.vue';
+import TopBar from './Topbar/Topbar.vue'
 import User from './User/User.vue';
 import UserInput from './User/UserInput.vue';
 import Spinner from 'vue-simple-spinner';
@@ -30,6 +31,7 @@ export default {
   },
   components: {
     Sidebar,
+    TopBar,
     User,
     UserInput,
     Spinner

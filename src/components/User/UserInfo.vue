@@ -1,35 +1,10 @@
 <template>
-  <div>
+  <div class="user" v-bind:class="{ sidebarActive: sidebarActive }">
     <transition name="fade">
       <h1 class="welcome-text" v-if="!isWelcomed">Welcome {{ user.name || user.login }}</h1>
     </transition>
     <transition name="fade">
-    <div v-if="showInfo" class="user-info" v-bind:class="{ active: this.active }">
-      <div class="top">
-        <div class="top__item" @click="toggleNav" style="margin-left: 10px">
-          <img class="hamburger" src="../../assets/images/hamburger.svg" alt="hamburger">
-          <hr class="vertical"/>
-        </div>
-        <div class="top__item">
-          <p>{{ user.login }}</p>
-          <hr class="vertical"/>
-        </div>
-        <div v-if="user.company" class="top__item">
-          <p>{{ user.company }}</p>
-          <hr class="vertical"/>
-        </div>
-        <div v-if="user.location" class="top__item">
-          <p>{{ user.location }}</p>
-          <hr class="vertical"/>
-        </div>
-        <div v-if="user.blog && this.allowBlog(50)" class="top__item blog">
-          <p>{{ user.blog }}</p>
-          <hr class="vertical"/>
-        </div>
-        <div v-if="user.orgs" class="top__item orgs">
-          <img class="top__item--img" v-bind:src="org.avatar_url" v-for="org in orgs" :key="org.id" v-tooltip.top-center="org.login" v-if="orgs"/>
-        </div>
-      </div>
+      <div v-if="isWelcomed" class="container">
       <div class="history">
         <div v-if="user.avatar_url" class="history__image">
           <img v-bind:src="user.avatar_url" class="" alt="avatar">
@@ -81,15 +56,7 @@ export default {
   },
   props: [],
   methods: {
-    allowBlog(maxChars) {
-      if (this.user.blog) {
-        return this.user.blog.length <= maxChars;
-      }
     },
-    toggleNav() {
-      this.$store.dispatch('toggleNav');
-    }
-  },
   computed: {
     user() {
       return this.$store.state.user.data;
@@ -103,10 +70,7 @@ export default {
     years() {
       return this.$store.state.user.data.years;
     },
-    orgs() {
-      return this.$store.state.user.data.orgs;
-    },
-    active() {
+    sidebarActive() {
       return this.$store.state.user.sidebar;
     }
   },
@@ -131,57 +95,18 @@ export default {
 <style scoped lang="sass">
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
-
-  .welcome-text
-    @include absolutecenter()
-    text-transform: uppercase
-  .user-info
+  .user
+    height: 90vh
     transform: translateX(0)
     transition: transform .6s ease
     @media only screen and (min-width: 420px)
       margin-left: $sidebar-width
-    &.active
+    &.sidebarActive
       transform: translateX($sidebar-width-small)
-    .top
-      display: flex
-      align-items: center
-      border-bottom: 1px $primary-light solid
-      width: 100%
-      height: 80px
-      .top__item
-        display: flex
-        align-items: center
-        margin-left: 40px
-        @media only screen and (max-width: 420px)
-          margin-left: 20px
-        &.blog
-          @media only screen and (max-width: 420px)
-            display: none
-        &.orgs
-          @media only screen and (max-width: 420px)
-            flex-direction: column
-            justify-content: space-around
-            height: 50px
-        .top__item--img
-          width: 40px
-          height: auto
-          margin-right: 40px
-          @media only screen and (max-width: 420px)
-            margin: 0
-            width: 20px
-        .hamburger
-          width: 35px
-          @media only screen and (min-width: 420px)
-            display: none
-
-        p
-          @media only screen and (max-width: 420px)
-            width: min-content
-            font-size: 10px
-        hr
-          margin-left: 40px
-          @media only screen and (max-width: 420px)
-            margin-left: 20px
+    .welcome-text
+      @include absolutecenter()
+      text-transform: uppercase
+    .container
     .history
       padding: $base-margin 0
       display: flex
@@ -224,7 +149,7 @@ export default {
       h2
         padding: 40px
       ul
-        padding-left: 40px
+        padding-left: 20px
         > li
           display: inline-block
           zoom: 1

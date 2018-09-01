@@ -3,13 +3,13 @@
     <router-link to="/" id="mojo">
       <a><img src="../../assets/images/mojo.png" alt="mojo"></a>
     </router-link>
-    <router-link v-if="isLoggedIn" to="/user" class="link">
+    <router-link to="/user" class="link">
       <img src="../../assets/images/home.png" alt="home">
     </router-link>
-    <router-link v-if="isLoggedIn" to="/versus" class="link">
+    <router-link to="/versus" class="link">
       <img class="vs" src="../../assets/images/vs.png" alt="home">
     </router-link>
-    <router-link v-if="isLoggedIn" to="/info" class="link">
+    <router-link to="/info" class="link">
       <img src="../../assets/images/info.png" alt="info">
     </router-link>
   </nav>
@@ -35,6 +35,7 @@ export default {
 
   .sidebar
     height: 90vh
+    top: 0
     position: fixed
     width: $sidebar-width
     background: $primary-light

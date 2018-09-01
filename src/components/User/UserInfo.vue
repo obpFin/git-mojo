@@ -108,11 +108,12 @@ export default {
       text-transform: uppercase
     .container
     .history
-      padding: $base-margin 0
+      padding: $base-margin
       display: flex
       border-bottom: 1px $primary-light solid
       @media only screen and (max-width: 420px)
         flex-direction: column
+        padding: $base-margin-small
       .history__image
         display: inline-block
         padding: 40px
@@ -147,9 +148,13 @@ export default {
           @include highlight()
     .commits
       h2
-        padding: 40px
+        padding: 60px
+        @media only screen and (max-width: 420px)
+          padding: 40px
       ul
-        padding-left: 20px
+        padding-left: 40px
+        @media only screen and (max-width: 420px)
+          padding-left: $base-margin-small
         > li
           display: inline-block
           zoom: 1

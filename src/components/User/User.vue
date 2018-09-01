@@ -45,7 +45,7 @@ export default {
     .user__name
       @include absolutecenter()
       @media only screen and (min-width: 1025px)
-        left: 40%
+        left: 50%
       @media only screen and (max-width: 420px)
-        transform: translate(-40%, -50%)
+        transform: translate(-50%, -50%)
 </style>

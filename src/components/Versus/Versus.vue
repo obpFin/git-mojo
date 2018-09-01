@@ -3,6 +3,7 @@
     <div class="versus">
       <div class="versus__user">
         <User :data="user"/>
+        <p class="versus__text">Versus</p>
       </div>
       <div class="versus__opponents">
         <div v-if="opponents">
@@ -14,7 +15,7 @@
       <div class="versus__setting">
         <div class="input">
           <div class="input__add">
-            <input :disabled="maxOpponents" :class="{ disabled: maxOpponents}" v-model="opponentName" v-on:keyup.enter="addOpponent" class="text-area center" type="text" placeholder="username"/>
+            <input :disabled="maxOpponents" :class="{ disabled: maxOpponents}" v-model="opponentName" v-on:keyup.enter="addOpponent" class="text-area center" type="text" placeholder="Github user"/>
             <button :disabled="maxOpponents" @click="addOpponent" class="btn box small" :class="{ disabled: maxOpponents}">Add</button>
           </div>
           <button id="cta" @click="onVersusStart" :disabled="!opponents" class="btn red">GO</button>
@@ -66,6 +67,8 @@ export default {
         this.maxOpponents = false;
       }
     }
+  },
+  created() {
   }
 };
 </script>
@@ -80,7 +83,7 @@ export default {
     padding: 0 $base-margin * 2
     @media only screen and (max-width: 420px)
       margin-left: $sidebar-width-small
-      padding: 0 20px
+      padding: 0 40px
 
     > div
       height: (100% / 3)
@@ -92,13 +95,18 @@ export default {
       align-items: center
       height: 30%
       @media only screen and (max-width: 420px)
-        height: 20%
+        height: initial
+        margin-top: 20px
+      .versus__text
+        font-size: $text-lg
+        color: $primary-red
+        text-transform: uppercase
 
     .versus__opponents
       height: 40%
       justify-content: center
       @media only screen and (max-width: 420px)
-        height: 50%
+        height: 45%
       > div
         display: flex
         justify-content: center
@@ -107,6 +115,9 @@ export default {
     .versus__setting
       height: 30%
       justify-content: center
+      @media only screen and (max-width: 420px)
+        justify-content: start
+        margin-top: 40px
       .input
         display: flex
         justify-content: center

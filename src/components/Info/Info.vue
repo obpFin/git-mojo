@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-  <div class="info">
+  <div class="info" v-bind:class="{ sidebarActive: sidebarActive }">
     <hr class="horizontal">
     <h1>GH Mojo</h1>
     <hr class="horizontal">
@@ -16,9 +16,14 @@
 
 <script>
 export default {
-  name: "Info",
+  name: 'Info',
   data: function() {
     return {};
+  },
+  computed: {
+    sidebarActive() {
+      return this.$store.state.user.sidebar;
+    }
   }
 };
 </script>
@@ -27,14 +32,22 @@ export default {
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
   .info
-    @include absolutecenter()
     text-align: center
+    transform: translateX(0)
+    transition: transform .6s ease
+    position: relative
+    top: 10%
+    @media only screen and (min-width: 420px)
+      margin-left: $sidebar-width
+    &.sidebarActive
+      transform: translateX($sidebar-width-small)
+      left: -5%
     hr.horizontal
       @include absolutecenter()
       &:nth-of-type(2)
         top: 0
     h1, li
-      margin: 40px 0
+      padding: 40px 0
     ul
       > li
         &.lower

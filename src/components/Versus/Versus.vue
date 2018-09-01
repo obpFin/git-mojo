@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="versus">
+    <div class="versus" v-bind:class="{ sidebarActive: sidebarActive }">
       <div class="versus__user">
         <User :data="user"/>
         <p class="versus__text">Versus</p>
@@ -57,6 +57,9 @@ export default {
     opponents() {
       console.log('Opponents: ', this.$store.state.opponent.opponents);
       return this.$store.state.opponent.opponents;
+    },
+    sidebarActive() {
+      return this.$store.state.user.sidebar;
     }
   },
   watch: {
@@ -78,12 +81,15 @@ export default {
   @import "../../assets/sass/mixins/mixins"
   .versus
     height: 100%
-    margin-left: $sidebar-width
     background: $primary-lighter
     padding: 0 $base-margin * 2
+    transform: translateX(0)
+    transition: transform .6s ease
+    &.sidebarActive
+      transform: translateX(20px)
+      left: -5%
     @media only screen and (max-width: 420px)
-      margin-left: $sidebar-width-small
-      padding: 0 40px
+      padding: 0
 
     > div
       height: (100% / 3)

@@ -68,6 +68,8 @@ export default {
   @import "../../assets/sass/mixins/mixins"
 
   .top-bar
+    position: relative
+    z-index: 9999
     background: $primary-light
     transform: translateX(0)
     transition: transform .6s ease

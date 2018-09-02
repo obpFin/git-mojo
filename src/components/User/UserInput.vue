@@ -71,6 +71,7 @@ export default {
 
   #gh-logo
     transform: translateY(20px)
+    width: 50px
   .container
     @include abs-pos()
 

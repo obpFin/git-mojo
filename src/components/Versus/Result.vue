@@ -78,6 +78,8 @@ export default {
       justify-content: center
       margin-left: $sidebar-width / 2
       padding: 40px $base-margin * 2
+      border-radius: 5px
+      margin-top: 40px
       @media only screen and (max-width: 420px)
         margin-left: 0
         padding: 0 20px

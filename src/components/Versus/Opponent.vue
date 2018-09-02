@@ -64,8 +64,12 @@ export default {
   $hard: #fe0229
 
   .opponent
+    .opponent__info--loading
+      display: flex
+      justify-content: center
     .opponent__info
       display: flex
+      justify-content: center
       margin-left: 40px
 
       img.vs

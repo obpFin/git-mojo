@@ -1,7 +1,9 @@
 <template>
   <div class="user" v-bind:class="{ sidebarActive: sidebarActive }">
     <transition name="fade">
-      <h1 class="welcome-text" v-if="!isWelcomed">Welcome {{ user.name || user.login }}</h1>
+      <div class="welcome">
+        <h1 class="welcome__text" v-show="!isWelcomed">Welcome {{ user.name || user.login }}</h1>
+      </div>
     </transition>
     <transition name="fade">
       <div v-if="isWelcomed" class="container">
@@ -100,9 +102,14 @@ export default {
       margin-left: $sidebar-width
     &.sidebarActive
       transform: translateX($sidebar-width-small)
-    .welcome-text
-      @include absolutecenter()
-      text-transform: uppercase
+    .welcome
+      position: absolute
+      top: 0
+      height: 90vh
+      width: 100vw
+      .welcome__text
+        @include absolutecenter()
+        text-transform: uppercase
     .container
     .history
       padding: $base-margin

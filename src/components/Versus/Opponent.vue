@@ -71,6 +71,8 @@ export default {
       display: flex
       justify-content: center
       margin-left: 40px
+      @media only screen and (max-width: 420px)
+        padding: 10px 0
 
       img.vs
         width: 75px

@@ -94,7 +94,6 @@ export default {
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
   .user
-    height: 90vh
     transform: translateX(0)
     transition: transform .6s ease
     @media only screen and (min-width: 420px)

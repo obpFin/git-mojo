@@ -80,7 +80,6 @@ export default {
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
   .versus
-    height: 100%
     background: $primary-lighter
     padding: 0 $base-margin * 2
     transform: translateX(0)
@@ -92,14 +91,13 @@ export default {
       padding: 0
 
     > div
-      height: (100% / 3)
       display: flex
       flex-direction: column
       border-bottom: 1px $primary-light solid
     .versus__user
       justify-content: center
       align-items: center
-      height: 30%
+      height: 250px
       @media only screen and (max-width: 420px)
         height: initial
         margin-top: 20px
@@ -109,7 +107,7 @@ export default {
         text-transform: uppercase
 
     .versus__opponents
-      height: 40%
+      height: 300px
       justify-content: center
       @media only screen and (max-width: 420px)
         height: 45%
@@ -119,8 +117,9 @@ export default {
         @media only screen and (max-width: 420px)
           flex-direction: column
     .versus__setting
-      height: 30%
+      height: 200px
       justify-content: center
+      border-bottom: none
       @media only screen and (max-width: 420px)
         justify-content: start
         margin-top: 40px

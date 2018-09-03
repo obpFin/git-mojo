@@ -10,7 +10,7 @@
       <div class="history">
         <div v-if="user.avatar_url" class="history__image">
           <img v-bind:src="user.avatar_url" class="" alt="avatar">
-          <h2 v-if="user.name" class="light">{{ user.name }}</h2>
+          <h2 class="light">{{ user.name || user.login }}</h2>
           <hr class="horizontal"/>
         </div>
         <div class="history__info">
@@ -35,12 +35,15 @@
         </div>
       </div>
       <div class="commits">
-        <h2>Public contribution history</h2>
-        <ul>
-          <li v-for="year in years" :key="year.year">
-            {{ year.year }} <span>{{ year.total }}</span>
-          </li>
-        </ul>
+        <div>
+          <h2>Public contribution history</h2>
+          <ul>
+            <li v-for="year in years" :key="year.year">
+              {{ year.year }} <span>{{ year.total }}</span>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
     </transition>
@@ -106,7 +109,7 @@ export default {
       position: absolute
       top: 0
       height: 90vh
-      width: 100vw
+      width: 90vw
       .welcome__text
         @include absolutecenter()
         text-transform: uppercase
@@ -151,6 +154,8 @@ export default {
         p > span
           @include highlight()
     .commits
+      display: flex
+      flex-direction: column
       h2
         padding: 60px
         @media only screen and (max-width: 420px)

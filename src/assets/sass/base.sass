@@ -5,6 +5,7 @@
 $primary-dark: #102027
 $primary-lighter: #37474f
 $primary-light: #62727b
+$almost-white: #f4efef
 $primary-red: #ff7043
 $red-darker: #d84315
 $text-light: #ffffff
@@ -117,7 +118,7 @@ ul
   display: block
   width: 200px
   height: 40px
-  color: black !important
+  color: $almost-white
   text-transform: uppercase
   background: $primary-red
   border-radius: 6px
@@ -139,6 +140,10 @@ ul
     opacity: 0.5
 
 .btn:hover
+  transform: translateY(-1px)
+  color: white
+
+
 
 .btn.disabled:hover 
   pointer-events:none

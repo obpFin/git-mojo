@@ -3,7 +3,8 @@ import mojoScore from '../../utils/mojoScore';
 
 // initial state
 const state = {
-  opponents: []
+  opponents: [],
+  winnerAnnounced: false
 };
 
 // actions
@@ -31,6 +32,9 @@ const actions = {
   },
   removeOpponent({ commit }, id) {
     commit('removeOpponentFromStore', id);
+  },
+  announceWinner({ commit }, status) {
+    commit('setWinnerAnnounced', status);
   }
 };
 // mutations
@@ -57,6 +61,9 @@ const mutations = {
   removeOpponentFromStore(state, id) {
     state.opponents.map(o => console.log(o.id));
     state.opponents = state.opponents.filter(opp => opp.id !== id);
+  },
+  setWinnerAnnounced(state, status) {
+    state.winnerAnnounced = status
   }
 };
 // getters

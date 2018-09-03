@@ -47,6 +47,7 @@ export default {
       this.opponentName = ''
     },
     onVersusStart() {
+      this.$store.dispatch('announceWinner', false);
       this.$router.push({name: 'results', params: {user: this.user, opponents: this.opponents}});
     }
   },
@@ -81,7 +82,7 @@ export default {
   @import "../../assets/sass/mixins/mixins"
   .versus
     background: $primary-lighter
-    padding: 0 $base-margin * 2
+    padding-left: $base-margin * 2
     transform: translateX(0)
     transition: transform .6s ease
     &.sidebarActive

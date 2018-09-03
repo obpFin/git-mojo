@@ -1,22 +1,30 @@
 <template>
+  <div class="result" v-bind:class="{ sidebarActive: sidebarActive }">
   <transition name="fade">
-  <div class="result">
-    <img class="back" src="../../assets/images/back.png" @click="pushBack" alt="back">
-    <div class="result__inner" v-bind:class="{ sidebarActive: sidebarActive }">
-      <div v-for="(r, index) in results" :key="r.id" :class="`place${index+1}`">
-        <i>{{ index + 1 }}</i>
-        <img :src="r.img" alt="img">
-        <div class="result__info">
-          <p class="name">{{ r.name }}</p>
-          <p class="">
-            <span>{{ r.score }}</span>
-            points
-          </p>
+    <div v-show="!winnerIsAnnounced" class="outcome">
+      <h1 v-if="userWon">You win!</h1>
+      <h1 v-else>You lost</h1>
+    </div>
+  </transition>
+  <transition name="fade">
+    <div v-if="winnerIsAnnounced" class="standings">
+      <img class="back" src="../../assets/images/back.png" @click="pushBack" alt="back">
+      <div class="result__inner" v-bind:class="{ sidebarActive: sidebarActive }">
+        <div v-for="(r, index) in results" :key="r.id" :class="`place${index+1}`">
+          <i>{{ index + 1 }}</i>
+          <img :src="r.img" alt="img">
+          <div class="result__info">
+            <p class="name">{{ r.name }}</p>
+            <p class="">
+              <span>{{ r.score }}</span>
+              points
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </transition>
+  </div>
 </template>
 
 <script>
@@ -52,9 +60,22 @@ export default {
     },
     sidebarActive() {
       return this.$store.state.user.sidebar;
+    },
+    winnerIsAnnounced() {
+      return this.$store.state.opponent.winnerAnnounced;
+    },
+    userWon() {
+      const user = this.$store.state.user.data.login;
+      const winner = this.results[0].name;
+      return winner === user;
     }
   },
-  created() {
+  mounted() {
+    if (!this.winnerIsAnnounced) {
+      setTimeout(() => {
+        this.$store.dispatch('announceWinner', true);
+      }, 2000);
+    }
   }
 }
 </script>
@@ -62,13 +83,22 @@ export default {
 <style scoped lang="sass">
   @import "../../assets/sass/main"
   @import "../../assets/sass/mixins/mixins"
-
-  .result
+  .outcome
+    margin: auto
+    @include absolutecenter()
+    h1
+      text-transform: uppercase
+      color: $primary-red
+  .standings
     img.back
+      position: absolute
+      z-index: 9999
       width: 42px
       filter: brightness(0) invert(1)
       margin-top: 40px
       margin-left: $sidebar-width + 40px
+      &:hover
+        cursor: pointer
       @media only screen and (max-width: 420px)
         margin-left: 20px
 

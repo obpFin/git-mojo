@@ -80,9 +80,12 @@ export default {
       return this.$store.state.user.mobile;
     }
   },
+  created() {
+    this.$store.dispatch('setNav', false);
+  },
   mounted() {
     if (this.isMobileView) {
-      this.$store.dispatch('toggleNav');
+      this.$store.dispatch('setNav', false);
     }
     if (this.user.name || this.user.login) {
       // show info immediately after initial login

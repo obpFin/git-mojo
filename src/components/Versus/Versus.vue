@@ -77,7 +77,7 @@ export default {
   },
   mounted() {
     if (this.isMobileView) {
-      this.$store.dispatch('toggleNav');
+      this.$store.dispatch('setNav', false);
     }
   }
 };

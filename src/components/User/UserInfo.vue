@@ -75,9 +75,15 @@ export default {
     },
     sidebarActive() {
       return this.$store.state.user.sidebar;
+    },
+    isMobileView() {
+      return this.$store.state.user.mobile;
     }
   },
-  mounted: function() {
+  mounted() {
+    if (this.isMobileView) {
+      this.$store.dispatch('toggleNav');
+    }
     if (this.user.name || this.user.login) {
       // show info immediately after initial login
       if (this.isWelcomed) {

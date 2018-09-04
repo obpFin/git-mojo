@@ -9,7 +9,8 @@ const state = {
   userNotFound: false,
   isWelcomed: false,
   apiLimitExceeded: false,
-  sidebar: false
+  sidebar: false,
+  mobile: window.innerWidth <= 700
 };
 
 // actions

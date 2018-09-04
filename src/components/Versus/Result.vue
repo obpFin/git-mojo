@@ -92,7 +92,7 @@ export default {
   .standings
     img.back
       position: absolute
-      z-index: 9999
+      z-index: 2
       width: 42px
       filter: brightness(0) invert(1)
       margin-top: 40px

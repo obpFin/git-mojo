@@ -61,6 +61,9 @@ export default {
     },
     sidebarActive() {
       return this.$store.state.user.sidebar;
+    },
+    isMobileView() {
+      return this.$store.state.user.mobile;
     }
   },
   watch: {
@@ -72,7 +75,10 @@ export default {
       }
     }
   },
-  created() {
+  mounted() {
+    if (this.isMobileView) {
+      this.$store.dispatch('toggleNav');
+    }
   }
 };
 </script>

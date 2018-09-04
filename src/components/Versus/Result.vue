@@ -8,7 +8,7 @@
   </transition>
   <transition name="fade">
     <div v-if="winnerIsAnnounced" class="standings">
-      <img class="back" src="../../assets/images/back.png" @click="pushBack" alt="back">
+      <img class="back" src="../../assets/images/back.png" @click="pushBack" alt="back" v-bind:class="{ aside: sidebarActive }">
       <div class="result__inner" v-bind:class="{ sidebarActive: sidebarActive }">
         <div v-for="(r, index) in results" :key="r.id" :class="`place${index+1}`">
           <i>{{ index + 1 }}</i>
@@ -99,6 +99,8 @@ export default {
       margin-left: $sidebar-width + 40px
       &:hover
         cursor: pointer
+      &.aside
+        padding-left: 60px
       @media only screen and (max-width: 420px)
         margin-left: 20px
 

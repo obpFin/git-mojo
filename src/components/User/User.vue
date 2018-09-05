@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import Spinner from 'vue-simple-spinner';
 import UserInput from './UserInput.vue';
 import UserInfo from './UserInfo.vue';
 
@@ -21,8 +20,7 @@ export default {
   props: [],
   components: {
     UserInput,
-    UserInfo,
-    Spinner
+    UserInfo
   },
   data: function() {
     return {};

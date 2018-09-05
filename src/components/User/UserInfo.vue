@@ -137,7 +137,7 @@ export default {
           display: flex
           flex-direction: column
           align-items: center
-          padding: 30px
+          padding: 10px
 
         img
           width: 150px

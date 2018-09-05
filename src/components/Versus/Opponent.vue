@@ -1,7 +1,7 @@
 <template>
   <div class="opponent">
     <div v-show="data.loading" class="opponent__info--loading">
-      <Spinner/>
+      <Spinner line-fg-color="#ff7043"/>
     </div>
     <div v-if="data.login" class="opponent__info">
       <img class="remove" src="../../assets/images/remove.png" alt="remove" @click="removeOpponent">

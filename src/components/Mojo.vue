@@ -1,20 +1,20 @@
 <template>
-<div class="wrapper">
-  <div class="content">
-    <div class="inner">
-      <TopBar v-if="isLoggedIn"/>
-      <Sidebar v-if="isLoggedIn"/>
-      <router-view>
-        <User key="user"/>
-      </router-view>
-      <transition name="fade">
-        <div class="user__load" v-if="fetchingUser" key="load">
-          <Spinner size="big" line-fg-color="#ff7043"/>
-        </div>
-      </transition>
+  <div class="wrapper">
+    <div class="content">
+      <div class="inner">
+        <TopBar v-if="isLoggedIn"/>
+        <Sidebar v-if="isLoggedIn"/>
+        <router-view>
+          <User key="user"/>
+        </router-view>
+        <transition name="fade">
+          <div class="user__load" v-if="fetchingUser" key="load">
+            <Spinner size="big" line-fg-color="#ff7043"/>
+          </div>
+        </transition>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -25,10 +25,6 @@ import UserInput from './User/UserInput.vue';
 import Spinner from 'vue-simple-spinner';
 
 export default {
-  name: 'Mojo',
-  created() {
-    document.title = 'Mojo';
-  },
   components: {
     Sidebar,
     TopBar,
@@ -36,10 +32,6 @@ export default {
     UserInput,
     Spinner
   },
-  data: function() {
-    return {};
-  },
-  methods: {},
   computed: {
     fetchingUser() {
       return this.$store.state.user.fetchUser;

@@ -117,7 +117,7 @@ export default {
     .welcome
       position: absolute
       top: 0
-      height: 90vh
+      height: 80vh
       width: 90vw
       .welcome__text
         @include absolutecenter()
@@ -167,8 +167,9 @@ export default {
       flex-direction: column
       h2
         padding: 60px
+        padding-bottom: 20px
         @media only screen and (max-width: 420px)
-          padding: 40px
+          padding: 40px 40px 20px 40px
       ul
         padding-left: 40px
         @media only screen and (max-width: 420px)

@@ -114,7 +114,7 @@ export default {
         text-transform: uppercase
 
     .versus__opponents
-      height: 300px
+      height: 200px
       justify-content: center
       @media only screen and (max-width: 420px)
         height: 45%

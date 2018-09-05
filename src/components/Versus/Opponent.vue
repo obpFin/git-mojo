@@ -38,18 +38,10 @@ export default {
       return mojoScore(this.data);
     },
     userScore() {
-      console.log('ASD', this.$store.state.user.data.score)
       return this.$store.state.user.data.score;
     },
     opponentLevel() {
       return opponentLevel(this.userScore, this.score)
-    }
-  },
-  created() {
-    if (this.data.contributions) {
-      console.log('opponentScore: ', this.score);
-      console.log('userScore: ', this.userScore);
-      console.log('dff: ', opponentLevel(this.userScore, this.score));
     }
   }
 };

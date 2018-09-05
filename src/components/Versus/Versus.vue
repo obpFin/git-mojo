@@ -56,7 +56,6 @@ export default {
       return this.$store.state.user.data;
     },
     opponents() {
-      console.log('Opponents: ', this.$store.state.opponent.opponents);
       return this.$store.state.opponent.opponents;
     },
     sidebarActive() {

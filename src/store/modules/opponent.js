@@ -22,7 +22,6 @@ const actions = {
         }
         opponent.score = mojoScore(opponent)
         commit('setOpponent', opponent);
-        console.log('OpponentData', state);
       },
       error => {
         console.log(error);
@@ -59,7 +58,6 @@ const mutations = {
     }
   },
   removeOpponentFromStore(state, id) {
-    state.opponents.map(o => console.log(o.id));
     state.opponents = state.opponents.filter(opp => opp.id !== id);
   },
   setWinnerAnnounced(state, status) {

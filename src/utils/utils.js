@@ -28,9 +28,7 @@ const opponentLevel = (userScore, opponentScore) => {
     HARD: 'hard'
   }
 
-  console.log('userScore:', userScore, 'opponentScore: ', opponentScore)
   const diff = (opponentScore - userScore) / userScore;
-  console.log('diff: ', diff)
   if (diff < -0.5) {
     return LEVELS.EASY
   }

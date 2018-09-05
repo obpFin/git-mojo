@@ -43,7 +43,6 @@ const actions = {
               commit('setUserFavLang', favLang);
             });
           }
-          console.log('UserData', state);
         },
         error => {
           if (error === 403) {

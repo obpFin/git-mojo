@@ -34,7 +34,7 @@ export default {
   @import "../../assets/sass/main"
 
   .sidebar
-    height: 90vh
+    height: 100%
     top: 0
     position: fixed
     width: $sidebar-width

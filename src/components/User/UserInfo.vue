@@ -118,7 +118,9 @@ export default {
       position: absolute
       top: 0
       height: 80vh
-      width: 90vw
+      width: 65vw
+      @media only screen and (max-width: 420px)
+        width: 100vw
       .welcome__text
         @include absolutecenter()
         text-transform: uppercase

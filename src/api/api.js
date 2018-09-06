@@ -29,7 +29,6 @@ const fetchUserContribs = userName => {
       fetch(`${contribsSourceUrl}/${userName}`)
         .then(stream => stream.json())
         .then(data => {
-          console.log('user contribs: ', data);
           resolve(data);
         })
         .catch(error => reject(() => console.log(error)));

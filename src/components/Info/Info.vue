@@ -56,6 +56,9 @@ export default {
         top: 0
     h1, li
       padding: 40px 0
+      @media only screen and (max-width: 420px)
+      padding: 20px 0
+
     ul
       > li
         &.lower

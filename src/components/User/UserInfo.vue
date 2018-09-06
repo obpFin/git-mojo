@@ -174,6 +174,7 @@ export default {
           padding: 40px 40px 20px 40px
       ul
         padding-left: 40px
+        padding-bottom: 30px
         @media only screen and (max-width: 420px)
           padding-left: $base-margin-small
         > li

@@ -124,6 +124,8 @@ export default {
       .welcome__text
         @include absolutecenter()
         text-transform: uppercase
+        @media only screen and (min-width: 420px)
+          left: 40%
     .container
     .history
       padding: $base-margin
@@ -188,7 +190,7 @@ export default {
             color: $primary-red
             font-weight: bold
             font-size: $text-lg
-            text-shadow: 1px 0 5px black
+            text-shadow: 1px 0 2px black
             @media only screen and (max-width: 420px)
               transform: none
               padding-bottom: 10px

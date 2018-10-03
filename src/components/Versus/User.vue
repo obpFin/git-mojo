@@ -8,7 +8,7 @@
         <img v-bind:src="data.avatar_url" alt="img" class="user__img">
       </div>
       <div class="score">
-        <p class="highlight">{{ this.data.score }}</p>
+        <p class="highlight"><span>score: </span>{{ this.data.score }}</p>
       </div>
     </div>
     <div class="user__score">
@@ -39,6 +39,8 @@ export default {
           width: 80px
       .name, .score
         margin: auto
+        .highlight span
+          color: $text-darker
       p
         margin: 0
         margin-left: 20px

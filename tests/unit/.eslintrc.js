@@ -1,19 +1,16 @@
 module.exports = {
-  extends: 'airbnb-base',
-  globals: {
-    jest: true,
-    expect: true,
-    mockFn: true,
-    config: true,
-    afterEach: true,
-    beforeEach: true,
-    describe: true,
-    it: true,
-    runs: true,
-    waitsFor: true,
-    pit: true,
-    require: true,
-    xdescribe: true,
-    xit: true
+  root: true,
+  env: {
+    node: true
+  },
+  extends: ["plugin:vue/essential", "@vue/standard"],
+  rules: {
+    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "space-before-function-paren": "off",
+    quotes: ["error", "single"]
+  },
+  parserOptions: {
+    parser: "babel-eslint"
   }
-};
+}

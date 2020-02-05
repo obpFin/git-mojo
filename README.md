@@ -12,9 +12,8 @@ Vue Router
 VueX
 SASS w/ BEM
 Jest
-CircleCI
-AWS S3 w/ CloudFront
 Eslint/Prettier
+Netlify
 ```
 
 ## Project setup
